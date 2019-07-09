@@ -8,8 +8,9 @@ export default new Vuex.Store({
     harde: true,
   },
   mutations: {
-    changeharde(state, type) {
+    typehead(state, type) {
       state.harde = type;
+      console.log(state.harde)
     }
   },
   actions: {

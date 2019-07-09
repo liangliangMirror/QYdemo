@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-
+import Login from './views/login.vue'
+import City from './views/city.vue'
+import Search from './views/search_l.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -12,10 +14,23 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: Home
+    }, {
+      path: '/login',
+      name: 'login',
+      component: Login,
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/city',
+      name: 'city',
+      component: City,
+    }, {
+      path: '/',
+      redirect: { path: '/home' }
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: Search,
     }
   ]
 })

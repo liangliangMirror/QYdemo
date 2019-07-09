@@ -1,6 +1,7 @@
 <template>
   <div>
-    <harde-l v-if="hardeisok" />
+    <router-link to="/"></router-link>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -15,14 +16,10 @@ html {
 </style>
 
 <script>
-import hardeL from "./components/harde_l.vue";
 import "mint-ui/lib/style.css";
 export default {
   data() {
     return {};
-  },
-  components: {
-    hardeL
   }
 };
 </script>
