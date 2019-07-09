@@ -25,12 +25,13 @@
 <script>
 import Vue from "vue";
 import { Navbar, TabItem, TabContainer, TabContainerItem, Cell } from "mint-ui";
-import "mint-ui/lib/style.css";
+// import "mint-ui/lib/style.css";
 Vue.component(Navbar.name, Navbar);
 Vue.component(Cell.name, Cell);
 Vue.component(TabItem.name, TabItem);
 Vue.component(TabContainer.name, TabContainer);
 Vue.component(TabContainerItem.name, TabContainerItem);
+
 export default {
   data() {
     return {
