@@ -1,18 +1,28 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <harde-l v-if="isok" />
+    <swpie-l></swpie-l>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import "mint-ui/lib/style.css";
+import { mapState } from "vuex";
+import hardeL from "../components/harde_l.vue";
+import swpieL from "../components/swpie.vue";
 export default {
-  name: 'home',
+  name: "home",
   components: {
-    HelloWorld
+    hardeL,
+    swpieL
+  },
+  computed: {
+    ...mapState({
+      isok(state) {
+        return state.harde;
+      }
+    })
   }
-}
+};
 </script>

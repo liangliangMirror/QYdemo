@@ -1,28 +1,22 @@
 <template>
   <div>
-    <mt-navbar v-model="selected">
-      <mt-tab-item id="1">选项一</mt-tab-item>
-      <mt-tab-item id="2">选项二</mt-tab-item>
-      <mt-tab-item id="3">选项三</mt-tab-item>
-    </mt-navbar>
-    <mt-tab-container v-model="selected">
-      <mt-tab-container-item id="1">
-        <mt-cell v-for="n in 10" :title="'内容 ' + n" />
-      </mt-tab-container-item>
-      <mt-tab-container-item id="2">
-        <mt-cell v-for="n in 4" :title="'测试 ' + n" />
-      </mt-tab-container-item>
-      <mt-tab-container-item id="3">
-        <mt-cell v-for="n in 6" :title="'选项 ' + n" />
-      </mt-tab-container-item>
-    </mt-tab-container>
+    <router-link to="/"></router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 <style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  color: #444;
+}
 </style>
 
 <script>
+<<<<<<< HEAD
 import Vue from "vue";
 import { Navbar, TabItem, TabContainer, TabContainerItem, Cell } from "mint-ui";
 // import "mint-ui/lib/style.css";
@@ -32,11 +26,13 @@ Vue.component(TabItem.name, TabItem);
 Vue.component(TabContainer.name, TabContainer);
 Vue.component(TabContainerItem.name, TabContainerItem);
 
+=======
+import "mint-ui/lib/style.css";
+import "vant/lib/index.css";
+>>>>>>> f433049d07f7b26e7c3e292e0bdb30c4cf1b70b9
 export default {
   data() {
-    return {
-      selected: "1"
-    };
+    return {};
   }
 };
 </script>
