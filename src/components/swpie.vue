@@ -1,8 +1,14 @@
 <template>
   <van-swipe :autoplay="3000" indicator-color="white">
+<<<<<<< HEAD
     <van-swipe-item>
       <img src="https://picb2b.qyer.com/FuhcpbmD6CmLSmyIiDa4C9JR9KPv" alt class="imgs" />
     </van-swipe-item>
+=======
+    <van-swipe-item>1</van-swipe-item>
+    <van-swipe-item>2</van-swipe-item>
+    <van-swipe-item>3</van-swipe-item>
+>>>>>>> liang
   </van-swipe>
 </template>
 <script>
