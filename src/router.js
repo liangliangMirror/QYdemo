@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Login from './views/login.vue'
 import City from './views/city.vue'
+import Jinnang from './views/jinnang.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -18,6 +20,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login,
+    },
+    {
+      path: '/jinnang',
+      name: 'jinnang',
+      component: Jinnang,
     },
     {
       path: '/city',

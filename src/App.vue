@@ -11,7 +11,11 @@
   padding: 0;
 }
 html {
-  color: #444;
+  // color: #444;
+}
+body {
+  background-color: #f5f5f5;
+  font: 13px/20px helvetica, arial, sans-serif;
 }
 </style>
 
