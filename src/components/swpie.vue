@@ -1,9 +1,8 @@
 <template>
   <van-swipe :autoplay="3000" indicator-color="white">
-    <van-swipe-item>1</van-swipe-item>
-    <van-swipe-item>2</van-swipe-item>
-    <van-swipe-item>3</van-swipe-item>
-    <van-swipe-item>4</van-swipe-item>
+    <van-swipe-item>
+      <img src="https://picb2b.qyer.com/FuhcpbmD6CmLSmyIiDa4C9JR9KPv" alt class="imgs" />
+    </van-swipe-item>
   </van-swipe>
 </template>
 <script>
@@ -13,7 +12,9 @@ import { Swipe, SwipeItem } from "vant";
 Vue.use(Swipe).use(SwipeItem);
 export default {
   data() {
-    return {};
+    return {
+      imgs: {}
+    };
   },
   comments: {
     vant() {
@@ -24,4 +25,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.imgs {
+  width: 375px;
+  height: 180px;
+}
 </style>
