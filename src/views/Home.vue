@@ -11,7 +11,7 @@
 
 <script>
 // @ is an alias to /src
-import "mint-ui/lib/style.css";
+// import "mint-ui/lib/style.css";
 import { mapState } from "vuex";
 import hardeL from "../components/home/harde_l.vue";
 import swpieL from "../components/home/swpie.vue";
