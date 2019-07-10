@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <harde-l v-if="isok" />
+    <swpie-l></swpie-l>
   </div>
 </template>
 
@@ -9,10 +10,12 @@
 import "mint-ui/lib/style.css";
 import { mapState } from "vuex";
 import hardeL from "../components/harde_l.vue";
+import swpieL from "../components/swpie.vue";
 export default {
   name: "home",
   components: {
-    hardeL
+    hardeL,
+    swpieL
   },
   computed: {
     ...mapState({
