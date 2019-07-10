@@ -12,9 +12,7 @@ import { Swipe, SwipeItem } from "vant";
 Vue.use(Swipe).use(SwipeItem);
 export default {
   data() {
-    return {
-      imgs: {}
-    };
+    return {};
   },
   comments: {
     vant() {
