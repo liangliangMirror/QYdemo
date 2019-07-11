@@ -4,7 +4,7 @@
     <div class="ui-section-body">
       <ul class="index-subcategory-list">
         <li v-for="(item,key,index) in ploys" :key="index">
-          <a>
+          <a @click="location">
             <img :src="item" />
             <span>{{key}}</span>
           </a>
@@ -38,6 +38,11 @@ export default {
       },
       title: "精选玩乐"
     };
+  },
+  methods: {
+    location() {
+      this.$router.push({ name: "location" });
+    }
   }
 };
 </script>

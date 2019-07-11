@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Login from './views/login.vue'
 import City from './views/city.vue'
 import Jinnang from './views/jinnang.vue'
+import Location from './views/location.vue'
 
 Vue.use(Router)
 
@@ -33,6 +34,17 @@ export default new Router({
     }, {
       path: '/',
       redirect: { path: '/home' }
+    }, {
+      path: '/location',
+      name: 'location',
+      component: Location,
+      beforeEnter(to, from, next) {
+        next({
+          params: {
+            xianame: from.name,
+          }
+        })
+      }
     }
   ]
 })
