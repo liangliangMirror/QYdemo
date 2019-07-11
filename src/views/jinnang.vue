@@ -301,5 +301,26 @@ h3 {
     }
   }
 }
+
+.mFooter {
+  border-top: 1px solid #65ae76;
+  margin-top: 23px;
+  padding: 10px 13px 5px;
+  font-size: 15px;
+  line-height: 30px;
+  a {
+    text-decoration: none;
+    color: #006aad;
+  }
+  .sign {
+    color: #1e66b2;
+  }
+  .nav {
+    color: #727272;
+    a {
+      color: #727272;
+    }
+  }
+}
 </style>
 
