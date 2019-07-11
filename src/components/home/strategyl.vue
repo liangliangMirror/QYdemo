@@ -23,11 +23,7 @@
         >
           <a class="flow-biu-card flow-card">
             <aside class="img-box img-type-2">
-              <img
-                alt
-                :src="require('../../assets/img/wanle_l '+ (index*1+1) +'.jpg')"
-                lazy="loaded"
-              />
+              <img alt :src="item.cover" lazy="loaded" />
             </aside>
             <main class="content-box">
               <p class="title">{{item.title}}</p>
@@ -46,7 +42,7 @@
         </waterfall-slot>
       </waterfall>
       <div class="load-more">
-        <span @click="jiazais">{{jiazai}}</span>
+        <span @click="addItems">{{jiazai}}</span>
       </div>
     </div>
   </section>
@@ -70,19 +66,21 @@ export default {
       items: [],
       isBusy: false,
       jiazai: "加载更多内容",
-      arr: 0
+      arr: 0,
+      drr: 0,
+      crr: 0,
+      ih: 0
     };
   },
   methods: {
-    jiazais() {
-      this.jiazai = "加载中...";
-      this.addItems();
-    },
     addItems: function() {
+      this.jiazai = "加载中...";
       this.arr = Object.keys(this.items);
-      if (!this.isBusy && this.arr.length < 500) {
+      if (!this.isBusy && this.arr.length < 100) {
         this.isBusy = true;
         this.axioss();
+      } else if (this.arr.length > 100) {
+        this.jiazai = "更多内容请去APP观看";
       }
     },
     reflowed: function() {
@@ -94,17 +92,38 @@ export default {
           "https://www.easy-mock.com/mock/5d109ad4d2f7c32907262335/example/PUBU"
         )
         .then(response => {
-          this.items = response.data.data;
+          for (const key in response.data.data) {
+            this.drr = key * 1 + this.crr;
+            this.items[this.drr] = response.data.data[key];
+          }
           console.log(this.items);
-          this.jiazai = "加载更多";
+          this.jiazai = "加载更多内容";
+          this.crr += 15;
         })
         .catch(function(error) {
           console.log(error);
         });
+    },
+    ihs() {
+      var scrollTop =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      var windowHeight =
+        document.documentElement.clientHeight || document.body.clientHeight;
+      var scrollHeight =
+        document.documentElement.scrollHeight || document.body.scrollHeight;
+      this.ih = scrollHeight - scrollTop - windowHeight;
+      if (this.ih <= 10) {
+        this.addItems();
+        return this.ih;
+      }
+      return this.ih;
     }
   },
   created() {
-    this.axioss();
+    this.addItems();
+  },
+  mounted() {
+    window.addEventListener("scroll", this.ihs);
   }
 };
 </script>
