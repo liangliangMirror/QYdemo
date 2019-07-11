@@ -2,12 +2,14 @@
   <div>
     <van-nav-bar title="切换国家城市" left-text="返回" left-arrow @click-left="onClickLeft" />
     <van-search placeholder="请输入搜索关键词" v-model="value" />
-    <history-l></history-l>
+    <history-l v-if="historyl.length" :title="historyl"></history-l>
+    <city-list-l></city-list-l>
   </div>
 </template>
 <script>
 import Vue from "vue";
 import historyL from "../components/location/historyl";
+import cityListL from "../components/location/citylistl";
 import { mapState } from "vuex";
 import { NavBar } from "vant";
 import { Search } from "vant";
@@ -16,20 +18,17 @@ Vue.use(Search);
 Vue.use(NavBar);
 export default {
   methods: {
-    onClickLeft() {
-      console.log(this.$route);
-    }
+    onClickLeft() {}
   },
-  mounted() {
-    console.log(this.$route);
-  },
+  mounted() {},
   data() {
     return {
       value: ""
     };
   },
   components: {
-    historyL
+    historyL,
+    cityListL
   },
   computed: {
     ...mapState({

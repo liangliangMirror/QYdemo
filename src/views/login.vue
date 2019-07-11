@@ -9,8 +9,6 @@
 </template>
 <script>
 import Vue from "vue";
-import router from "vue-router";
-// import Mint from "mint-ui";
 import { Header, Button } from "mint-ui";
 
 // Vue.use(Mint);
