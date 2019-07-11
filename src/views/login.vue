@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-nav-bar title="穷游网" left-arrow @click-left="backto('home')" />
-    <h2>注册/登录/shab</h2>
+    <h2>注册/登录</h2>
     <van-cell-group>
       <div class="font-num">+86</div>
       <van-field
