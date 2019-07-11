@@ -1,7 +1,7 @@
 <template>
   <section class="item-nav-wrapper">
     <ul>
-      <li class="item" v-for="(item,key) in imgs " :key="key">
+      <li class="item" v-for="(item,key) in imgs " :key="key" @click="goto('jinnang')">
         <a href="###" data-bn-ipg="mindex-nav-guide" class="item-btn">
           <i class="item-icon" :style="item"></i>
           <span>{{spans[key]}}</span>
@@ -40,6 +40,11 @@ export default {
         9: "background:no-repeat center/100% url(//fes.qyerstatic.com/Fibzv7V9e1eoPD7XT4C0uC-hZIf7?imageslim);"
       }
     };
+  },
+  methods:{
+    goto(name){
+      this.$router.push({name});
+    }
   }
 };
 </script>

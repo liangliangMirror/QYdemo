@@ -49,6 +49,29 @@
         </dd>
       </dl>
     </div>
+    <footer class="mFooter">
+      <p class="sign">
+        <a href="//m.qyer.com/login.php" data-bn-ipg="login-bottom">登录</a> ｜
+        <a data-bn-ipg="foot-register" href="//login.qyer.com/register.php">注册</a>
+      </p>
+      <p class="nav">
+        <a href="//m.qyer.com/" data-bn-ipg="foot-home">穷游首页</a>｜
+        <a href="//m.qyer.com/place">目的地</a>｜
+        <a href="//m.qyer.com/z/">折扣</a>｜
+        <a href="//m.qyer.com/bbs">论坛</a>｜
+        <a href="//m.qyer.com/ask">问答</a>
+      </p>
+      <p class="type">
+        <em>手机版</em>｜
+        <a data-bn-ipg="foot-w" id="js_footer_pc_link" href="javascript:void(0);">电脑版</a>｜
+        <a href="//m.qyer.com/app">APP</a>｜
+        <a
+          id="js_a_feedback"
+          href="//m.qyer.com/feedback?title=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E7%A9%B7%E6%B8%B8%E9%94%A6%E5%9B%8A_%E6%97%85%E6%B8%B8%E6%8C%87%E5%8D%97%E8%B7%AF%E4%B9%A6%E4%B8%8B%E8%BD%BD_%E8%87%AA%E5%8A%A9%E6%B8%B8%E6%94%BB%E7%95%A5%20-%20%E7%A9%B7%E6%B8%B8%E9%94%A6%E5%9B%8A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20"
+        >提意见</a>
+      </p>
+      <p class="copy">Copyright © 2004-2015 QYER.inc</p>
+    </footer>
   </div>
 </template>
 <script>
