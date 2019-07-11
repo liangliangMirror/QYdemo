@@ -1,6 +1,6 @@
 <template>
     <div class="play">
-        <p v-for="(item,index) in list" :key="item.id"><img :src="require('../assets/img/tree' + (index+1) + '.jpg')"><span>{{item.title}}</span></p>
+        <p v-for="(item,index) in list" :key="item.id"><img :src="require('../assets/img/wu' + (index+1) + '.jpg')"><span>{{item.title}}</span></p>
       </div>
 </template>
 <script>
