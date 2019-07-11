@@ -1,10 +1,22 @@
 <template>
     <div class="main">
-      <div>
+      <div class="logo">
         <img src="../assets/img/dongjing.jpg" alt="">
+        <div class="titles">
+          <p class="cn">东京</p>
+          <p class="en">Tokyo</p>
+      </div>
+      <div class="like wrap">
+          <span class="icon">爱</span>
+          <span class="text">想去</span>
+      </div>
+      <div class="arrived wrap">
+          <span class="icon">旗</span>
+          <span class="text">去过</span>
+      </div>
       </div>
       <div class="collect">
-        <p>[xin]我收藏的东京目的地</p>
+        <p @click="ceshi">[xin]我收藏的东京目的地</p>
         <p>></p>
       </div>
       <unmissable-r></unmissable-r>
@@ -39,7 +51,7 @@
         <div class="rd-top">相关推荐</div>
         <div class="rd-sec-wrap">
           <div class="rd-left">
-           <a class="rd-section" href="#" v-for="item in tours" :key="item.id">
+           <a class="rd-section" href="#" v-for="item in tree" :key="item.id">
             <div class="rd-cover"><img class="rd-cover-img" src="../assets/img/file1.gif"></div>
               <div class="rd-description">情人节特辑 | 旅行超燃混剪，我们闪闪发光的2018 北京 美国 日本 巴厘岛 </div>
                 <div class="rd-message">
@@ -54,7 +66,7 @@
             </a>
           </div>
           <div class="rd-right">
-            <a class="rd-section" href="#" v-for="item in tours" :key="item.id">
+            <a class="rd-section" href="#" v-for="item in tree" :key="item.id">
               <div class="rd-cover">
                 <img class="rd-cover-img" src="../assets/img/file2.gif">
               </div>
@@ -81,11 +93,11 @@
   <div class="landscape">
     <div class="box-track">
       <ul>
-      <li v-for="item in tour" :key="item.id">
+      <li v-for="(item,index) in tours" :key="item.id">
         <a href="#" class="qui-place-link">
-              <div class="poi-img" style="height: 104px;"><img src="../assets/img/liang1.jpg"></div>
+              <div class="poi-img" style="height: 104px;"><img :src="require('../assets/img/liang' + (index+1) + '.jpg')"></div>
                 <div class="poi-info">
-                      <p class="poi-title">箱根</p>
+                      <p class="poi-title">{{item.title}}</p>
                 </div>
           </a>
       </li>
@@ -131,6 +143,31 @@ export default {
         like:'247'
       }],
       tours:[{
+        id:'1',
+        title:'籍根'
+      },{
+        id:'2',
+        title:'京都'
+      },{
+        id:'3',
+        title:'富士山地区'
+      },{
+        id:'4',
+        title:'镰仓'
+      },{
+        id:'5',
+        title:'大阪'
+      },{
+        id:'6',
+        title:'富士河口湖'
+      },{
+        id:'7',
+        title:'横滨'
+      },{
+        id:'8',
+        title:'奈良'
+      }],
+      tree:[{
 
       },{
 
@@ -138,6 +175,9 @@ export default {
     };
   },  
   methods: {
+    ceshi(){
+      this.$router.push({path:'./aaa'});
+    }
   },
   components:{
     playT,
@@ -147,12 +187,65 @@ export default {
 </script>
 
 <style lang="scss">
+body{
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+}
  .main{
     flex: 1;
     overflow-x: hidden;
     overflow-y: auto;
     .logo{
-      height: 211px;
+      height: 180px;
+      position: relative;
+      img{
+      width: 100%;
+      height: 100%;
+    }
+    .titles{
+      position:absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 60px;
+      padding: 20px 10px 0;
+      color: #fff;
+      .cn{
+        width: 70%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 20px;
+        line-height: 26px;
+        font-weight: 700;
+      }
+      .en{
+        width: 70%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 16px;
+        font-weight: 400;
+        padding-left: 2px;
+      }
+    }
+    }
+    .like{
+      right: 76px;
+    }
+    .wrap{
+        position: absolute;
+        color: #fff;
+        bottom: 9px;
+        font-size: 12px;
+        .icon{
+            display: block;
+            width: 22px;
+            height: 22px;
+        }
+    }
+    .arrived{
+          right: 25px;
     }
     img{
       width: 100%;
@@ -432,20 +525,39 @@ export default {
       height: 126px;
       margin-top: 10px;
       .box-track{
-        height: 100%;
         overflow-x: auto;
-        overflow-y: hidden;
+        overflow-y: scroll;
+        &::-webkit-scrollbar{
+          background-color: transparent;
+        }
         ul{
-          height: 100%;
           width: 940px;
-          overflow-x: auto;
-          overflow-y: hidden;
           li{
             width: 116px;
             display: block;
             float: left;
             padding-left: 12px;
             box-sizing: border-box;
+            a{
+              color: #444;
+              -webkit-tap-highlight-color: rgba(0,0,0,0);
+              .poi-img{
+                height: 104px;
+                img{
+                    height: 100%;
+                    display: block;
+                }
+              }
+              .poi-info{
+                    line-height: 1;
+                    font-size: 0;
+                    p{
+                          line-height: 1;
+                          font-size: 12px;
+                          margin-top:10px;
+                    }
+              }
+            }
           }
         }
       }

@@ -1,13 +1,18 @@
 <template>
     <header class="header">
-      <div>首页</div>
+      <div @click="home">首页</div>
       <div>东京</div>
       <div><span>搜索</span><span>+</span></div>
     </header>
 </template>
 <script>
+import Vue from "vue";
 export default {
-    
+    methods:{
+      home(){
+        this.$router.push({ path:'/home'});
+      }
+    }
 }
 </script>
 
