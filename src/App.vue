@@ -12,6 +12,7 @@
 }
 html {
   color: #444;
+  font: 14px/24px Helvetica, San Francisco, Arial, sans-serif;
 }
 </style>
 
