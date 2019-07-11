@@ -2,7 +2,7 @@
   <section class="item-nav-wrapper">
     <ul>
       <li class="item" v-for="(item,key) in imgs " :key="key" @click="goto('jinnang')">
-        <a href="###" data-bn-ipg="mindex-nav-guide" class="item-btn">
+        <a data-bn-ipg="mindex-nav-guide" class="item-btn">
           <i class="item-icon" :style="item"></i>
           <span>{{spans[key]}}</span>
         </a>
@@ -41,9 +41,9 @@ export default {
       }
     };
   },
-  methods:{
-    goto(name){
-      this.$router.push({name});
+  methods: {
+    goto(name) {
+      this.$router.push({ name });
     }
   }
 };

@@ -7,16 +7,17 @@
       </router-link>
       <mt-button icon="more" slot="right"></mt-button>
     </mt-header>
-    <mt-search v-model="value" :result.sync="result" placeholder="搜索你想要的锦囊"></mt-search>
+    <mt-search v-model="value" :result.sync="result1" placeholder="搜索你想要的锦囊"></mt-search>
     <div class="jn-nav">
-      <div class="jn-nav1" v-for="(item,index) in result" :key="index">
-        {{item}}
+      <div class="jn-nav1" v-for="(item,index) in result" :key="index" @click="aaa(index)">
+        {{item.nav}}
         <span class="bor"></span>
       </div>
     </div>
-    <ul class="guideList">
+    <jn-list :title="aaaa"></jn-list>
+    <!-- <ul class="guideList">
       <li v-for="item in list" :key="item.name">
-        <a href="###">
+        <a>
           <p class="pic">
             <img :src="item.img" alt />
           </p>
@@ -24,7 +25,7 @@
           <p class="locate">{{item.locate}}</p>
         </a>
       </li>
-    </ul>
+    </ul>-->
     <div class="guideDown">
       <h3 class="caption">喜欢穷游锦囊？下载穷游锦囊APP离线看。</h3>
       <dl class="icons">
@@ -32,18 +33,12 @@
           <img src="../assets/img/app.png" width="55" height="55" alt />
         </dt>
         <dd class="iphone">
-          <a
-            data-bn-ipg="guide-iphone"
-            href="//guide.qyer.com/app/download/?campaign=app_guide&amp;category=qyer_m_guide_lixian"
-          >
+          <a data-bn-ipg="guide-iphone">
             <span>iPhone</span>
           </a>
         </dd>
         <dd class="android">
-          <a
-            data-bn-ipg="guide-android"
-            href="//guide.qyer.com/app/download/?campaign=app_guide&amp;category=qyer_m_guide_lixian"
-          >
+          <a data-bn-ipg="guide-android">
             <span>Android</span>
           </a>
         </dd>
@@ -51,24 +46,21 @@
     </div>
     <footer class="mFooter">
       <p class="sign">
-        <a href="//m.qyer.com/login.php" data-bn-ipg="login-bottom">登录</a> ｜
-        <a data-bn-ipg="foot-register" href="//login.qyer.com/register.php">注册</a>
+        <a data-bn-ipg="login-bottom" @click.prevent="goto('login')">登录</a> ｜
+        <a data-bn-ipg="foot-register">注册</a>
       </p>
       <p class="nav">
-        <a href="//m.qyer.com/" data-bn-ipg="foot-home">穷游首页</a>｜
-        <a href="//m.qyer.com/place">目的地</a>｜
-        <a href="//m.qyer.com/z/">折扣</a>｜
-        <a href="//m.qyer.com/bbs">论坛</a>｜
-        <a href="//m.qyer.com/ask">问答</a>
+        <a data-bn-ipg="foot-home">穷游首页</a>｜
+        <a>目的地</a>｜
+        <a>折扣</a>｜
+        <a>论坛</a>｜
+        <a>问答</a>
       </p>
       <p class="type">
         <em>手机版</em>｜
         <a data-bn-ipg="foot-w" id="js_footer_pc_link" href="javascript:void(0);">电脑版</a>｜
-        <a href="//m.qyer.com/app">APP</a>｜
-        <a
-          id="js_a_feedback"
-          href="//m.qyer.com/feedback?title=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E7%A9%B7%E6%B8%B8%E9%94%A6%E5%9B%8A_%E6%97%85%E6%B8%B8%E6%8C%87%E5%8D%97%E8%B7%AF%E4%B9%A6%E4%B8%8B%E8%BD%BD_%E8%87%AA%E5%8A%A9%E6%B8%B8%E6%94%BB%E7%95%A5%20-%20%E7%A9%B7%E6%B8%B8%E9%94%A6%E5%9B%8A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20"
-        >提意见</a>
+        <a>APP</a>｜
+        <a id="js_a_feedback" href="javascript:void(0);">提意见</a>
       </p>
       <p class="copy">Copyright © 2004-2015 QYER.inc</p>
     </footer>
@@ -78,6 +70,8 @@
 import Vue from "vue";
 import { Header, Button, Search } from "mint-ui";
 
+import jnList from "../components/home/jnlist";
+
 Vue.component(Header.name, Header);
 Vue.component(Button.name, Button);
 Vue.component(Search.name, Search);
@@ -86,7 +80,7 @@ export default {
   data() {
     return {
       value: "",
-      result: [
+      result1: [
         "热门",
         "亚洲",
         "欧洲",
@@ -96,42 +90,610 @@ export default {
         "非洲",
         "南极洲"
       ],
+      result: [
+        { nav: "热门", name: "hot" },
+        { nav: "亚洲", name: "asia" },
+        { nav: "欧洲", name: "europe" },
+        { nav: "北美洲", name: "north-america" },
+        { nav: "南美洲", name: "south-america" },
+        { nav: "大洋洲", name: "oceania" },
+        { nav: "非洲", name: "africa" },
+        { nav: "南极洲", name: "antarctica" }
+      ],
+      aaaa: {},
       list: [
-        {
-          img: require("../assets/img/chaoxian.jpg"),
-          name: "朝鲜",
-          locate: "朝鲜"
-        },
-        {
-          img: require("../assets/img/nasa.jpg"),
-          name: "NASA太空探索指南",
-          locate: "美国"
-        },
-        {
-          img: require("../assets/img/qy.jpg"),
-          name: "《权力的游戏》",
-          locate: "专题"
-        },
-        {
-          img: require("../assets/img/bael.jpg"),
-          name: "北爱尔兰",
-          locate: "英国"
-        },
-        {
-          img: require("../assets/img/kldy.jpg"),
-          name: "克罗地亚",
-          locate: "克罗地亚"
-        },
-        {
-          img: require("../assets/img/adlxy.jpg"),
-          name: "安达卢西亚",
-          locate: "西班牙"
-        }
+        [
+          {
+            img: require("../assets/img/chaoxian.jpg"),
+            name: "朝鲜",
+            locate: "朝鲜"
+          },
+          {
+            img: require("../assets/img/nasa.jpg"),
+            name: "NASA太空探索指南",
+            locate: "美国"
+          },
+          {
+            img: require("../assets/img/qy.jpg"),
+            name: "《权力的游戏》",
+            locate: "专题"
+          },
+          {
+            img: require("../assets/img/bael.jpg"),
+            name: "北爱尔兰",
+            locate: "英国"
+          },
+          {
+            img: require("../assets/img/kldy.jpg"),
+            name: "克罗地亚",
+            locate: "克罗地亚"
+          },
+          {
+            img: require("../assets/img/adlxy.jpg"),
+            name: "安达卢西亚",
+            locate: "西班牙"
+          }
+        ],
+        [
+          {
+            img: require("../assets/img/aiersudan.jpg"),
+            name: "艾尔苏丹",
+            locate: "爱尔苏丹"
+          },
+          {
+            img: require("../assets/img/bajisitan.jpg"),
+            name: "巴基斯坦",
+            locate: "巴基斯坦"
+          },
+          {
+            img: require("../assets/img/jingdu.jpg"),
+            name: "京都",
+            locate: "京都"
+          },
+          {
+            img: require("../assets/img/deli.jpg"),
+            name: "德利",
+            locate: "德利"
+          },
+          {
+            img: require("../assets/img/kataer.jpg"),
+            name: "卡塔尔",
+            locate: "卡塔尔"
+          },
+          {
+            img: require("../assets/img/mingguwu.jpg"),
+            name: "名古屋",
+            locate: "名古屋"
+          },
+          {
+            img: require("../assets/img/dongjing.jpg"),
+            name: "东京",
+            locate: "东京"
+          },
+          {
+            img: require("../assets/img/jianpuzhai.jpg"),
+            name: "柬埔寨",
+            locate: "柬埔寨"
+          },
+          {
+            img: require("../assets/img/lajiasitan.jpg"),
+            name: "拉贾斯坦",
+            locate: "拉贾斯坦"
+          }
+        ],
+        [
+          {
+            img: require("../assets/img/bali.jpg"),
+            name: "巴黎",
+            locate: "巴黎"
+          },
+          {
+            img: require("../assets/img/helan.jpg"),
+            name: "荷兰",
+            locate: "荷兰"
+          },
+          {
+            img: require("../assets/img/lusenbao.jpg"),
+            name: "卢森堡",
+            locate: "卢森堡"
+          },
+          {
+            img: require("../assets/img/luoma.jpg"),
+            name: "罗马",
+            locate: "罗马"
+          },
+          {
+            img: require("../assets/img/ruidian.jpg"),
+            name: "瑞典",
+            locate: "瑞典"
+          },
+          {
+            img: require("../assets/img/kataer.jpg"),
+            name: "卡塔尔",
+            locate: "卡塔尔"
+          }
+        ],
+        [
+          {
+            img: require("../assets/img/aidunmengde.jpg"),
+            name: "埃德蒙顿",
+            locate: "埃德蒙顿"
+          },
+          {
+            img: require("../assets/img/nasa.jpg"),
+            name: "NASA太空探索指南",
+            locate: "美国"
+          },
+          {
+            img: require("../assets/img/huashengdun.jpg"),
+            name: "华盛顿博物馆",
+            locate: "美国"
+          },
+          {
+            img: require("../assets/img/ny.jpg"),
+            name: "纽约",
+            locate: "美国"
+          },
+          {
+            img: require("../assets/img/nms.jpg"),
+            name: "纽约美食",
+            locate: "美国"
+          },
+          {
+            img: require("../assets/img/luoshanji.jpg"),
+            name: "洛杉矶",
+            locate: "洛杉矶"
+          }
+        ],
+        [
+          {
+            img: require("../assets/img/baijianei.jpg"),
+            name: "秘鲁",
+            locate: "秘鲁"
+          },
+          {
+            img: require("../assets/img/baijianei.jpg"),
+            name: "百家内",
+            locate: "百家内"
+          },
+          {
+            img: require("../assets/img/boliweiya.jpg"),
+            name: "玻利维亚",
+            locate: "玻利维亚"
+          },
+          {
+            img: require("../assets/img/eguaduoer.jpg"),
+            name: "厄瓜多尔",
+            locate: "厄瓜多尔"
+          },
+          {
+            img: require("../assets/img/fuhuodao.jpg"),
+            name: "复活岛",
+            locate: "复活岛地亚"
+          },
+          {
+            img: require("../assets/img/gelunbiya.jpg"),
+            name: "哥伦比亚",
+            locate: "哥伦比亚"
+          }
+        ],
+        [
+          {
+            img: require("../assets/img/jlbs.jpg"),
+            name: "几里巴斯",
+            locate: "基里巴斯"
+          },
+          {
+            img: require("../assets/img/kanbeila.jpg"),
+            name: "坎贝拉",
+            locate: "堪培拉"
+          },
+          {
+            img: require("../assets/img/palao.jpg"),
+            name: "帕劳",
+            locate: "帕劳"
+          },
+          {
+            img: require("../assets/img/xinxilan.jpg"),
+            name: "新西兰轻徒步",
+            locate: "新西兰"
+          },
+          {
+            img: require("../assets/img/xxl.jpg"),
+            name: "新西兰动物之旅",
+            locate: "新西兰"
+          },
+          {
+            img: require("../assets/img/xn.jpg"),
+            name: "悉尼",
+            locate: "澳大利亚"
+          }
+        ],
+        [
+          {
+            img: require("../assets/img/aiji.jpg"),
+            name: "埃及",
+            locate: "埃及"
+          },
+          {
+            img: require("../assets/img/esaiebiya.jpg"),
+            name: "埃塞俄比亚",
+            locate: "埃塞俄比亚"
+          },
+          {
+            img: require("../assets/img/kenniya.jpg"),
+            name: "肯尼亚",
+            locate: "肯尼亚"
+          },
+          {
+            img: require("../assets/img/moluoge.jpg"),
+            name: "摩洛哥",
+            locate: "摩洛哥"
+          },
+          {
+            img: require("../assets/img/nanfei.jpg"),
+            name: "南非",
+            locate: "南非"
+          },
+          {
+            img: require("../assets/img/namibiya.jpg"),
+            name: "纳米比亚",
+            locate: "纳米比亚"
+          }
+        ],
+        [
+          {
+            img: require("../assets/img/nanji.jpg"),
+            name: "乌斯怀亚",
+            locate: "南极"
+          },
+          {
+            img: require("../assets/img/nanji.jpg"),
+            name: "乌斯怀亚到南",
+            locate: "南极"
+          },
+          {
+            img: require("../assets/img/nanji.jpg"),
+            name: "乌斯怀亚到南极",
+            locate: "南极"
+          }
+        ]
       ]
+      // list: [
+      //   {
+      //     hot: [
+      //       {
+      //         img: require("../assets/img/chaoxian.jpg"),
+      //         name: "朝鲜",
+      //         locate: "朝鲜"
+      //       },
+      //       {
+      //         img: require("../assets/img/nasa.jpg"),
+      //         name: "NASA太空探索指南",
+      //         locate: "美国"
+      //       },
+      //       {
+      //         img: require("../assets/img/qy.jpg"),
+      //         name: "《权力的游戏》",
+      //         locate: "专题"
+      //       },
+      //       {
+      //         img: require("../assets/img/bael.jpg"),
+      //         name: "北爱尔兰",
+      //         locate: "英国"
+      //       },
+      //       {
+      //         img: require("../assets/img/kldy.jpg"),
+      //         name: "克罗地亚",
+      //         locate: "克罗地亚"
+      //       },
+      //       {
+      //         img: require("../assets/img/adlxy.jpg"),
+      //         name: "安达卢西亚",
+      //         locate: "西班牙"
+      //       }
+      //     ]
+      //   },
+      //   {
+      //     asia: [
+      //       {
+      //         img: require("../assets/img/chaoxian.jpg"),
+      //         name: "a",
+      //         locate: "朝鲜b"
+      //       },
+      //       {
+      //         img: require("../assets/img/nasa.jpg"),
+      //         name: "NASA太空探索指南",
+      //         locate: "美国"
+      //       },
+      //       {
+      //         img: require("../assets/img/qy.jpg"),
+      //         name: "《权力的游戏》",
+      //         locate: "专题"
+      //       },
+      //       {
+      //         img: require("../assets/img/bael.jpg"),
+      //         name: "北爱尔兰",
+      //         locate: "英国"
+      //       },
+      //       {
+      //         img: require("../assets/img/kldy.jpg"),
+      //         name: "克罗地亚",
+      //         locate: "克罗地亚"
+      //       },
+      //       {
+      //         img: require("../assets/img/adlxy.jpg"),
+      //         name: "安达卢西亚",
+      //         locate: "西班牙"
+      //       }
+      //     ]
+      //   },
+      //   {
+      //     europe: [
+      //       {
+      //         img: require("../assets/img/chaoxian.jpg"),
+      //         name: "a",
+      //         locate: "朝鲜b"
+      //       },
+      //       {
+      //         img: require("../assets/img/nasa.jpg"),
+      //         name: "NASA太空探索指南",
+      //         locate: "美国"
+      //       },
+      //       {
+      //         img: require("../assets/img/qy.jpg"),
+      //         name: "《权力的游戏》",
+      //         locate: "专题"
+      //       },
+      //       {
+      //         img: require("../assets/img/bael.jpg"),
+      //         name: "北爱尔兰",
+      //         locate: "英国"
+      //       },
+      //       {
+      //         img: require("../assets/img/kldy.jpg"),
+      //         name: "克罗地亚",
+      //         locate: "克罗地亚"
+      //       },
+      //       {
+      //         img: require("../assets/img/adlxy.jpg"),
+      //         name: "安达卢西亚",
+      //         locate: "西班牙"
+      //       }
+      //     ]
+      //   },
+      //   {
+      //     northAmerica: [
+      //       {
+      //         img: require("../assets/img/chaoxian.jpg"),
+      //         name: "aaa",
+      //         locate: "朝鲜gc"
+      //       },
+      //       {
+      //         img: require("../assets/img/nasa.jpg"),
+      //         name: "NASA太空探索指南",
+      //         locate: "美国"
+      //       },
+      //       {
+      //         img: require("../assets/img/qy.jpg"),
+      //         name: "《权力的游戏》",
+      //         locate: "专题"
+      //       },
+      //       {
+      //         img: require("../assets/img/bael.jpg"),
+      //         name: "北爱尔兰",
+      //         locate: "英国"
+      //       },
+      //       {
+      //         img: require("../assets/img/kldy.jpg"),
+      //         name: "克罗地亚",
+      //         locate: "克罗地亚"
+      //       },
+      //       {
+      //         img: require("../assets/img/adlxy.jpg"),
+      //         name: "安达卢西亚",
+      //         locate: "西班牙"
+      //       }
+      //     ]
+      //   },
+
+      //   {
+      //     southAmerica: [
+      //       {
+      //         img: require("../assets/img/chaoxian.jpg"),
+      //         name: "123",
+      //         locate: "朝鲜312"
+      //       },
+      //       {
+      //         img: require("../assets/img/nasa.jpg"),
+      //         name: "NASA太空探索指南",
+      //         locate: "美国"
+      //       },
+      //       {
+      //         img: require("../assets/img/qy.jpg"),
+      //         name: "《权力的游戏》",
+      //         locate: "专题"
+      //       },
+      //       {
+      //         img: require("../assets/img/bael.jpg"),
+      //         name: "北爱尔兰",
+      //         locate: "英国"
+      //       },
+      //       {
+      //         img: require("../assets/img/kldy.jpg"),
+      //         name: "克罗地亚",
+      //         locate: "克罗地亚"
+      //       },
+      //       {
+      //         img: require("../assets/img/adlxy.jpg"),
+      //         name: "安达卢西亚",
+      //         locate: "西班牙"
+      //       }
+      //     ]
+      //   },
+
+      //   {
+      //     oceania: [
+      //       {
+      //         img: require("../assets/img/chaoxian.jpg"),
+      //         name: "a11",
+      //         locate: "朝鲜b34"
+      //       },
+      //       {
+      //         img: require("../assets/img/nasa.jpg"),
+      //         name: "NASA太空探索指南",
+      //         locate: "美国"
+      //       },
+      //       {
+      //         img: require("../assets/img/qy.jpg"),
+      //         name: "《权力的游戏》",
+      //         locate: "专题"
+      //       },
+      //       {
+      //         img: require("../assets/img/bael.jpg"),
+      //         name: "北爱尔兰",
+      //         locate: "英国"
+      //       },
+      //       {
+      //         img: require("../assets/img/kldy.jpg"),
+      //         name: "克罗地亚",
+      //         locate: "克罗地亚"
+      //       },
+      //       {
+      //         img: require("../assets/img/adlxy.jpg"),
+      //         name: "安达卢西亚",
+      //         locate: "西班牙"
+      //       }
+      //     ]
+      //   },
+
+      //   {
+      //     africa: [
+      //       {
+      //         img: require("../assets/img/chaoxian.jpg"),
+      //         name: "agg",
+      //         locate: "朝鲜bgg"
+      //       },
+      //       {
+      //         img: require("../assets/img/nasa.jpg"),
+      //         name: "NASA太空探索指南",
+      //         locate: "美国"
+      //       },
+      //       {
+      //         img: require("../assets/img/qy.jpg"),
+      //         name: "《权力的游戏》",
+      //         locate: "专题"
+      //       },
+      //       {
+      //         img: require("../assets/img/bael.jpg"),
+      //         name: "北爱尔兰",
+      //         locate: "英国"
+      //       },
+      //       {
+      //         img: require("../assets/img/kldy.jpg"),
+      //         name: "克罗地亚",
+      //         locate: "克罗地亚"
+      //       },
+      //       {
+      //         img: require("../assets/img/adlxy.jpg"),
+      //         name: "安达卢西亚",
+      //         locate: "西班牙"
+      //       }
+      //     ]
+      //   },
+
+      //   {
+      //     antarctica: [
+      //       {
+      //         img: require("../assets/img/chaoxian.jpg"),
+      //         name: "aaa",
+      //         locate: "朝鲜bggg2"
+      //       },
+      //       {
+      //         img: require("../assets/img/nasa.jpg"),
+      //         name: "NASA太空探索指南",
+      //         locate: "美国"
+      //       },
+      //       {
+      //         img: require("../assets/img/qy.jpg"),
+      //         name: "《权力的游戏》",
+      //         locate: "专题"
+      //       },
+      //       {
+      //         img: require("../assets/img/bael.jpg"),
+      //         name: "北爱尔兰",
+      //         locate: "英国"
+      //       },
+      //       {
+      //         img: require("../assets/img/kldy.jpg"),
+      //         name: "克罗地亚",
+      //         locate: "克罗地亚"
+      //       },
+      //       {
+      //         img: require("../assets/img/adlxy.jpg"),
+      //         name: "安达卢西亚",
+      //         locate: "西班牙"
+      //       }
+      //     ]
+      //   }
+      // ]
+      // list: [
+      //   {
+      //     img: require("../assets/img/chaoxian.jpg"),
+      //     name: "朝鲜",
+      //     locate: "朝鲜"
+      //   },
+      //   {
+      //     img: require("../assets/img/nasa.jpg"),
+      //     name: "NASA太空探索指南",
+      //     locate: "美国"
+      //   },
+      //   {
+      //     img: require("../assets/img/qy.jpg"),
+      //     name: "《权力的游戏》",
+      //     locate: "专题"
+      //   },
+      //   {
+      //     img: require("../assets/img/bael.jpg"),
+      //     name: "北爱尔兰",
+      //     locate: "英国"
+      //   },
+      //   {
+      //     img: require("../assets/img/kldy.jpg"),
+      //     name: "克罗地亚",
+      //     locate: "克罗地亚"
+      //   },
+      //   {
+      //     img: require("../assets/img/adlxy.jpg"),
+      //     name: "安达卢西亚",
+      //     locate: "西班牙"
+      //   }
+      // ]
     };
   },
   methods: {
-    handleClose() {}
+    handleClose() {
+      this.router.go(-1);
+    },
+    goto(name) {
+      this.$router.push({ name });
+    },
+    golist(name) {
+      this.$router.push({ name });
+    },
+    aaa(index) {
+      // console.log(index);
+      this.aaaa = this.list[index];
+      // return this.list[index];
+    }
+  },
+  mounted() {
+    // console.log(this.route);
+    this.aaaa = this.list[0];
+    console.log(123);
+  },
+  components: {
+    jnList
   }
 };
 </script>
@@ -195,59 +757,59 @@ body {
   background: #e7e7e7;
 }
 
-.guideList {
-  margin: 10px auto;
-  width: 96%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+// .guideList {
+//   margin: 10px auto;
+//   width: 96%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   flex-wrap: wrap;
 
-  background-color: #fff;
-  border: 1px solid #dadada;
-  box-shadow: 0 2px 2px rgba(218, 218, 218, 0.4);
+//   background-color: #fff;
+//   border: 1px solid #dadada;
+//   box-shadow: 0 2px 2px rgba(218, 218, 218, 0.4);
 
-  li {
-    width: 33%;
-    border-right: 1px solid #dadada;
-    border-bottom: 1px solid #dadada;
+//   li {
+//     width: 33%;
+//     border-right: 1px solid #dadada;
+//     border-bottom: 1px solid #dadada;
 
-    &:nth-child(3n) {
-      border-right: none;
-    }
-    a {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+//     &:nth-child(3n) {
+//       border-right: none;
+//     }
+//     a {
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//       flex-direction: column;
 
-      padding: 10px 0;
-      text-align: center;
+//       padding: 10px 0;
+//       text-align: center;
 
-      .name {
-        padding-top: 5px;
-        font-size: 13px;
-        color: #2c2c2c;
-        font-weight: 400;
-      }
+//       .name {
+//         padding-top: 5px;
+//         font-size: 13px;
+//         color: #2c2c2c;
+//         font-weight: 400;
+//       }
 
-      .pic {
-        img {
-          display: block;
-          margin: 0 auto;
-          width: 64px;
-          height: 96px;
-        }
-      }
+//       .pic {
+//         img {
+//           display: block;
+//           margin: 0 auto;
+//           width: 64px;
+//           height: 96px;
+//         }
+//       }
 
-      .locate {
-        font-size: 11px;
-        line-height: 15px;
-        color: #939393;
-      }
-    }
-  }
-}
+//       .locate {
+//         font-size: 11px;
+//         line-height: 15px;
+//         color: #939393;
+//       }
+//     }
+//   }
+// }
 
 h3 {
   font-size: 100%;
@@ -301,7 +863,10 @@ h3 {
     }
   }
 }
-
+.mint-search-list-warp {
+  background-color: #fff;
+  z-index: 99;
+}
 .mFooter {
   border-top: 1px solid #65ae76;
   margin-top: 23px;
@@ -320,6 +885,20 @@ h3 {
     a {
       color: #727272;
     }
+  }
+
+  .type {
+    color: #636363;
+    em {
+      color: #000;
+      font-style: normal;
+      font-weight: 500;
+    }
+  }
+  .copy {
+    font-size: 13px;
+    line-height: 24px;
+    color: #b4b4b4;
   }
 }
 </style>

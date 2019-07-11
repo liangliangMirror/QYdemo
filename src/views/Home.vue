@@ -6,6 +6,7 @@
     <discount-L></discount-L>
     <ploy-l></ploy-l>
     <strategy-l></strategy-l>
+   
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-nav-bar title="穷游网" left-arrow @click-left="backto('home')" />
+    <van-nav-bar title="穷游网" left-arrow @click-left.prevent="backto" />
     <h2>注册/登录</h2>
     <van-cell-group>
       <div class="font-num">+86</div>
@@ -27,7 +27,7 @@ import { NavBar } from "vant";
 import { Field } from "vant";
 import { CellGroup } from "vant";
 import { Button } from "vant";
-
+import { mapState, mapMutations } from "vuex";
 Vue.use(Field);
 Vue.use(NavBar);
 Vue.use(CellGroup);
@@ -40,10 +40,17 @@ export default {
       password: ""
     };
   },
+
+  created() {
+    console.log("thisC", this.$route);
+  },
+
   methods: {
-    backto(name) {
-      console.log(name);
-      this.$router.push({ name });
+    backto() {
+      // this.$router.push({});
+      console.log(this.history);
+      console.log(this.$router.go);
+      this.$router.go(-1);
     }
   }
 };
