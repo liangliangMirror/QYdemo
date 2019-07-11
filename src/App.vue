@@ -1,40 +1,23 @@
 <template>
-  <div id="box">
-    <header-t></header-t>
-    <main-r></main-r>
-    <footer-e></footer-e>
+  <div>
+    <router-link to="/"></router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 <style lang="scss">
-*{margin: 0;padding: 0;}
-body,html{
-    height: 100%;
+* {
+  margin: 0;
+  padding: 0;
 }
-#box{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+html {
+  color: #444;
 }
 </style>
 
 <script>
-import Vue from "vue";
 import "mint-ui/lib/style.css";
-import headerT from "./components/header_t";
-import mainR from "./components/main_r";
-import footerE from "./components/footer_e";
+import "vant/lib/index.css";
 export default {
-  data() {
-    return {
-      selected: "1",
-      
-    };
-  },
-  components:{
-    headerT,
-    mainR,
-    footerE
-  }
-};
+}
 </script>

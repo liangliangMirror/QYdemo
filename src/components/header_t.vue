@@ -1,7 +1,7 @@
 <template>
     <header class="header">
       <div>首页</div>
-      <div>日本</div>
+      <div>东京</div>
       <div><span>搜索</span><span>+</span></div>
     </header>
 </template>

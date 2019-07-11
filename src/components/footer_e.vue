@@ -1,7 +1,7 @@
 <template>
     <div class="footer">
         <p>2004-2017 © 穷游网™ qyer.com All rights reserved.</p>
-        <p class="switchStyle"><span class="current">手机版</span><span><a href="//place.qyer.com/tokyo/">电脑版</a></span><span><a href="//m.qyer.com/app/guide">APP</a></span></p>
+        <p class="switchStyle"><span class="current">手机版</span><span><a href="#">电脑版</a></span><span><a href="#">APP</a></span></p>
     </div>
 </template>
 <script>
