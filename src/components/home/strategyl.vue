@@ -23,7 +23,7 @@
         >
           <a class="flow-biu-card flow-card">
             <aside class="img-box img-type-2">
-              <img alt :src="item.cover" lazy="loaded" />
+              <img alt :src="item.cover||require('../../assets/img/wanle_l 6.jpg')" lazy="loaded" />
             </aside>
             <main class="content-box">
               <p class="title">{{item.title}}</p>
@@ -79,6 +79,7 @@ export default {
       if (!this.isBusy && this.arr.length < 100) {
         this.isBusy = true;
         this.axioss();
+        console.log(123);
       } else if (this.arr.length > 100) {
         this.jiazai = "更多内容请去APP观看";
       }
