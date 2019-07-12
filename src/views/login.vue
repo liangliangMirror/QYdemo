@@ -34,7 +34,7 @@
 </template>
 <script>
 import Vue from "vue";
-import { Header, Button } from "mint-ui";
+// import { Header, Button } from "mint-ui";
 import { NavBar } from "vant";
 import { Field } from "vant";
 import { CellGroup } from "vant";
