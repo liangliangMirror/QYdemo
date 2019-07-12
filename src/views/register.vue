@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-nav-bar title="穷游网" left-arrow @click-left="backto" />
-    <h2>登录</h2>
+    <h2>注册</h2>
     <van-cell-group>
       <div class="font-num">+86</div>
       <van-field
@@ -10,7 +10,7 @@
         required
         clearable
         right-icon="question-o"
-        placeholder="请输入账号/手机号码"
+        placeholder="请输入手机号码"
       />
     </van-cell-group>
     <van-cell-group>
@@ -27,7 +27,7 @@
     <span class="login-tips">未注册手机号验证后自动创建</span>
     <van-button round type="danger">下一步</van-button>
     <div class="bot">
-      <div class="logpass" @click="goReg('register')">账号注册</div>
+      <div class="logpass" @click="goLog('login')">账号密码登录</div>
       <div class="log-help">需要帮助？</div>
     </div>
   </div>
@@ -55,7 +55,7 @@ export default {
     backto() {
       this.$router.go(-1);
     },
-    goReg(name) {
+    goLog(name) {
       this.$router.push({ name });
     }
   }

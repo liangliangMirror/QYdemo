@@ -9,7 +9,13 @@
     </mt-header>
     <mt-search v-model="value" :result.sync="result1" placeholder="搜索你想要的锦囊"></mt-search>
     <div class="jn-nav">
-      <div class="jn-nav1" v-for="(item,index) in result" :key="index" @click="parent(index)">
+      <div
+        class="jn-nav1"
+        v-for="(item,index) in result"
+        :key="index"
+        @click="parent(index,item.name)"
+        :class="{active:item.name == flagActive}"
+      >
         {{item.nav}}
         <span class="bor"></span>
       </div>
@@ -35,8 +41,8 @@
     </div>
     <footer class="mFooter">
       <p class="sign">
-        <a data-bn-ipg="login-bottom" @click.prevent="goto('login')">登录</a> ｜
-        <a data-bn-ipg="foot-register">注册</a>
+        <a data-bn-ipg="login-bottom" @click.prevent="goLog('login')">登录</a> ｜
+        <a data-bn-ipg="foot-register" @click.prevent="goReg('register')">注册</a>
       </p>
       <p class="nav">
         <a data-bn-ipg="foot-home">穷游首页</a>｜
@@ -347,21 +353,31 @@ export default {
             locate: "南极"
           }
         ]
-      ]
+      ],
+      flagActive: "hot"
     };
   },
   methods: {
     handleClose() {
       this.router.go(-1);
     },
-    goto(name) {
+    // 跳转登录
+    goLog(name) {
       this.$router.push({ name });
     },
-    golist(name) {
-      this.$router.push({ name });
-    },
-    parent(index) {
+    // golist(name) {
+    //   this.$router.push({ name });
+    // },
+
+    // 组件通讯
+    parent(index, name) {
       this.childrenCom = this.list[index];
+      // 高亮
+      this.flagActive = name;
+    },
+    // 跳转注册
+    goReg(name) {
+      this.$router.push({ name });
     }
   },
   mounted() {
@@ -373,6 +389,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.active {
+  color: #fff;
+  background-color: #ed323c;
+  border-radius: 3px;
+}
+
 body {
   width: 100%;
   background-color: #ecece5;
@@ -431,60 +453,6 @@ body {
   height: 22px;
   background: #e7e7e7;
 }
-
-// .guideList {
-//   margin: 10px auto;
-//   width: 96%;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   flex-wrap: wrap;
-
-//   background-color: #fff;
-//   border: 1px solid #dadada;
-//   box-shadow: 0 2px 2px rgba(218, 218, 218, 0.4);
-
-//   li {
-//     width: 33%;
-//     border-right: 1px solid #dadada;
-//     border-bottom: 1px solid #dadada;
-
-//     &:nth-child(3n) {
-//       border-right: none;
-//     }
-//     a {
-//       display: flex;
-//       justify-content: center;
-//       align-items: center;
-//       flex-direction: column;
-
-//       padding: 10px 0;
-//       text-align: center;
-
-//       .name {
-//         padding-top: 5px;
-//         font-size: 13px;
-//         color: #2c2c2c;
-//         font-weight: 400;
-//       }
-
-//       .pic {
-//         img {
-//           display: block;
-//           margin: 0 auto;
-//           width: 64px;
-//           height: 96px;
-//         }
-//       }
-
-//       .locate {
-//         font-size: 11px;
-//         line-height: 15px;
-//         color: #939393;
-//       }
-//     }
-//   }
-// }
 
 h3 {
   font-size: 100%;
