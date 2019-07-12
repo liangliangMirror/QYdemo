@@ -13,13 +13,13 @@ body,html{
 }
 #box{
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    overflow-x:hidden;
+    width:100%;
 }
 </style>
 
 <script>
-import Vue from "vue";
+// import Vue from "vue";
 import "mint-ui/lib/style.css";
 import headerT from "../components/header_t";
 import mainR from "../components/main_r";

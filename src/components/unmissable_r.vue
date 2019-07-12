@@ -1,6 +1,6 @@
 <template>
     <div class="unmissable">
-        <p>[赞]不可错过</p>
+        <p><van-icon name="thumb-circle-o" size="12px" />不可错过</p>
       </div>
 </template>
 <script>

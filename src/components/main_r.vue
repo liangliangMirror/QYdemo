@@ -7,19 +7,20 @@
           <p class="en">Tokyo</p>
       </div>
       <div class="like wrap">
-          <span class="icon">爱</span>
+          <span class="icon"><van-icon name="like-o" size="25px" /></span>
           <span class="text">想去</span>
       </div>
       <div class="arrived wrap">
-          <span class="icon">旗</span>
+          <span class="icon"><van-icon name="flag-o" size="25px" /></span>
           <span class="text">去过</span>
       </div>
       </div>
       <div class="collect">
-        <p @click="ceshi">[xin]我收藏的东京目的地</p>
+        <p @click="ceshi"><van-icon name="like-o" size="15px" />我收藏的东京目的地</p>
         <p>></p>
       </div>
       <unmissable-r></unmissable-r>
+      <discount-L></discount-L>
       <play-t></play-t> 
       <div class="recommend">
         <a class="btn">
@@ -27,6 +28,7 @@
             </a>
       </div>
       <unmissable-r></unmissable-r>
+      <discount-L></discount-L>
       <play-t></play-t> 
       <div class="recommend">
         <a class="btn">
@@ -109,8 +111,11 @@
 </template>
 <script>
 import Vue from 'vue';
+import { Icon } from 'vant';
 import playT from "../components/play_t";
 import unmissableR from "../components/unmissable_r";
+import discountL from "../components/home/discount";
+Vue.use(Icon);
 export default {
   data() {
     return {
@@ -182,6 +187,7 @@ export default {
   components:{
     playT,
     unmissableR,
+    discountL,
   }
 }
 </script>
@@ -189,12 +195,8 @@ export default {
 <style lang="scss">
 body{
   -webkit-overflow-scrolling: touch;
-  overflow-scrolling: touch;
 }
  .main{
-    flex: 1;
-    overflow-x: hidden;
-    overflow-y: auto;
     .logo{
       height: 180px;
       position: relative;

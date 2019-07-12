@@ -79,7 +79,6 @@ export default {
       if (!this.isBusy && this.arr.length < 100) {
         this.isBusy = true;
         this.axioss();
-        console.log(123);
       } else if (this.arr.length > 100) {
         this.jiazai = "更多内容请去APP观看";
       }
@@ -97,7 +96,6 @@ export default {
             this.drr = key * 1 + this.crr;
             this.items[this.drr] = response.data.data[key];
           }
-          console.log(this.items);
           this.jiazai = "加载更多内容";
           this.crr += 15;
         })

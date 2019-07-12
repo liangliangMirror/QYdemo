@@ -3,7 +3,7 @@
     <h3-l :title="title"></h3-l>
     <div class="ui-section-body">
       <ul class="index-choiceProduct-list">
-        <li v-for="(item,key,index) of discounts" :key="key">
+        <li v-for="(item,key,index) of discounts" :key="key" @click="message()">
           <a>
             <div class="pic">
               <img width="100%" :src="require('../../assets/img/navl' + (index+1) + '.jpg')" />
@@ -58,6 +58,11 @@ export default {
         }
       }
     };
+  },
+  methods:{
+    message(){
+      this.$router.push({path:'/discounts'})
+    }
   }
 };
 </script>
