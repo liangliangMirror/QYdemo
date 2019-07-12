@@ -6,7 +6,7 @@
       <div class="font-num">+86</div>
       <van-field
         style="display:inline-block;width:90%;"
-        v-model="username"
+        v-model="phone"
         required
         clearable
         right-icon="question-o"
@@ -18,6 +18,7 @@
       <van-field
         style="display:inline-block;width:90%;"
         v-model="password"
+        type="password"
         required
         clearable
         right-icon="question-o"
@@ -25,7 +26,7 @@
       />
     </van-cell-group>
     <span class="login-tips">未注册手机号验证后自动创建</span>
-    <van-button round type="danger">登录</van-button>
+    <van-button round type="danger" @click="log">登录</van-button>
     <div class="bot">
       <div class="logpass" @click="goReg('register')">账号注册</div>
       <div class="log-help">需要帮助？</div>
@@ -47,7 +48,7 @@ Vue.use(Button);
 export default {
   data() {
     return {
-      username: "",
+      phone: "",
       password: ""
     };
   },
@@ -57,6 +58,28 @@ export default {
     },
     goReg(name) {
       this.$router.push({ name });
+    },
+    log() {
+      if (this.phone && this.password) {
+        this.$axios
+          .get("http://localhost:3000/login", {
+            params: {
+              phone: this.phone,
+              password: this.password
+            }
+          })
+          .then(({ data }) => {
+            console.log(data);
+            if (data.length > 0) {
+              console.log("登录成功~~~~");
+              this.$router.replace({ name: "home" });
+            } else {
+              alert("账号或密码错误！");
+            }
+          });
+      } else {
+        alert("账号或密码不能为空！");
+      }
     }
   }
 };
