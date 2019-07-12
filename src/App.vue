@@ -17,6 +17,7 @@ html {
 </style>
 
 <script>
+
 import "mint-ui/lib/style.css";
 import "vant/lib/index.css";
 export default {

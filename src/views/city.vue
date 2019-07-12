@@ -13,8 +13,8 @@ body,html{
 }
 #box{
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    overflow-x:hidden;
+    width:100%;
 }
 </style>
 

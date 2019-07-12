@@ -11,6 +11,7 @@ export default {
     methods:{
       home(){
         this.$router.push({ path:'/home'});
+        // console.log(this)
       }
     }
 }
@@ -18,7 +19,6 @@ export default {
 
 <style lang="scss">
 .header{
-  display: flex;
   height: 50px;
   background: #0cbf79;
   text-align: center;

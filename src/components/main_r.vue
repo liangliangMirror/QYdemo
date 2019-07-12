@@ -20,6 +20,7 @@
         <p>></p>
       </div>
       <unmissable-r></unmissable-r>
+      <discount-L></discount-L>
       <play-t></play-t> 
       <div class="recommend">
         <a class="btn">
@@ -27,6 +28,7 @@
             </a>
       </div>
       <unmissable-r></unmissable-r>
+      <discount-L></discount-L>
       <play-t></play-t> 
       <div class="recommend">
         <a class="btn">
@@ -111,6 +113,7 @@
 import Vue from 'vue';
 import playT from "../components/play_t";
 import unmissableR from "../components/unmissable_r";
+import discountL from "../components/home/discount";
 export default {
   data() {
     return {
@@ -182,6 +185,7 @@ export default {
   components:{
     playT,
     unmissableR,
+    discountL,
   }
 }
 </script>
@@ -192,9 +196,6 @@ body{
   overflow-scrolling: touch;
 }
  .main{
-    flex: 1;
-    overflow-x: hidden;
-    overflow-y: auto;
     .logo{
       height: 180px;
       position: relative;

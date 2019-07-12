@@ -2,23 +2,14 @@
 <div>
     <van-nav-bar left-text="东京首页" left-arrow @click-left="onClickLeft" class="color">
       <van-icon name="search" slot="right" >
-        <span>搜索</span>
-        <span>定位</span>
+        <span class="van-span">定位</span>
       </van-icon>
     </van-nav-bar>
-    <van-collapse v-model="activeName" accordion>
-      <van-collapse-item title="景点观光" name="1">
-          <van-tree-select
-            :items="items"
-            :main-active-index="mainActiveIndex"
-            :active-id="activeId"
-            @navclick="onNavClick"
-            @itemclick="onItemClick"
-          />
-      </van-collapse-item>
-      <van-collapse-item title="筛选" name="2">内容</van-collapse-item>
-      <van-collapse-item title="默认排序" name="3">内容</van-collapse-item>
-    </van-collapse>
+  <van-dropdown-menu>
+  <van-dropdown-item v-model="value1" :options="option1" />
+  <van-dropdown-item v-model="value2" :options="option2" />
+  <van-dropdown-item v-model="value2" :options="option3" />
+</van-dropdown-menu>
     <ul class="fold">
       <li data-bn-ipg="mplace_poilist_Recommended_Topic0" v-for="(item,index) in tree" :key="item.id">
                         <a href="//m.qyer.com/place/tokyo/event/1150547/?cateid=151&amp;from=list">
@@ -37,36 +28,33 @@
 </template>
 <script>
 import Vue from "vue";
-import { NavBar,Icon,Collapse, CollapseItem,TreeSelect} from 'vant';
-Vue.use(Collapse).use(CollapseItem);
-Vue.use(TreeSelect);
+import { NavBar,Icon,Collapse, DropdownMenu, DropdownItem} from 'vant';
+Vue.use(DropdownMenu).use(DropdownItem);
 Vue.use(NavBar);
 Vue.use(Icon);
 export default {
   data() {
     return {
-      items:[{
-          text: '所有城市',
-          children: [{
-              text: '温州',
-              id: 1,
-              // 禁用选项
-              disabled: true
-            },
-            {
-              text: '杭州',
-              id: 2
-            }
-          ]
-        }
+      value1: 0,
+      value2: 'a',
+      option1: [
+        { text: '景点观光', value: 0 },
+        { text: '新款商品', value: 1 },
+        { text: '活动商品', value: 2 }
+      ],
+      option2: [
+        { text: '筛选', value: 'a' },
+        { text: '好评排序', value: 'b' },
+        { text: '销量排序', value: 'c' },
+      ],
+      option3: [
+        { text: '默认排序', value: 'a' },
+        { text: '好评排序', value: 'b' },
+        { text: '销量排序', value: 'c' },
       ],
       tree:[{
 
       },{},{},{},{},{},{},{},{}],
-      mainActiveIndex: 0,
-      activeId: 1,
-      activeName: '',
-      activeNames: ['']
     };
   },
     methods:{
@@ -89,22 +77,13 @@ export default {
 }
 .van-nav-bar__text,.van-icon-arrow-left:before{
   color: white;
-  .van-nav-bar{
+}
+.van-nav-bar__text,.van-icon-search:before,.van-span{
       color: white;
   }
-}
-.van-cell{
-  width: 33.3%;
-  float: left;
-  border:1px solid #ccc;
-}
-.nav{
-  width: 100%;
-}
 .fold{
   width: 100%;
   height: 449px;
-  margin-top: 46px;
   li{
     box-sizing: border-box;
     display: inline-block;
@@ -127,6 +106,9 @@ export default {
   height: 20px;
   text-align: center;
   border-bottom: 1px solid #ccc;
+}
+.zhe:active .fold{
+  height: 199px;
 }
 
 

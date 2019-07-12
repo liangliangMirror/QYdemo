@@ -13,7 +13,6 @@ export default {
 <style lang="scss">
 .footer{
     height: 40px;
-    display: flex;
     flex-direction: column;
     color: #9ea3ab;
     margin: 20px 0;
