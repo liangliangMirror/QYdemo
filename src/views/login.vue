@@ -10,15 +10,6 @@
 <script>
 import Vue from "vue";
 import { Header, Button } from "mint-ui";
-import { NavBar } from "vant";
-import { Field } from "vant";
-import { CellGroup } from "vant";
-import { Button } from "vant";
-
-Vue.use(Field);
-Vue.use(NavBar);
-Vue.use(CellGroup);
-Vue.use(Button);
 
 // Vue.use(Mint);
 Vue.component(Header.name, Header);
