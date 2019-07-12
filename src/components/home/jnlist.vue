@@ -49,11 +49,7 @@ export default {
       ]
     };
   },
-    props: ["title"],
-  component: {},
-  mounted() {
-    // console.log(this.title);
-  }
+  props: ["title"]
 };
 </script>
 <style lang="scss" scoped>
