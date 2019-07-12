@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     harde: true,
-    historyl: {}
+    historyl: [],
   },
   mutations: {
     typehead(state, type) {

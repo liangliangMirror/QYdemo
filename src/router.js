@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Login from './views/login.vue'
 import City from './views/city.vue'
 import Jinnang from './views/jinnang.vue'
+import Register from './views/register.vue';
 import Location from './views/location.vue'
 import Jnlist from './components/home/jnlist.vue'
 
@@ -22,6 +23,12 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login,
+
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register,
 
     },
     {

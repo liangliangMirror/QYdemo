@@ -9,23 +9,18 @@
     </mt-header>
     <mt-search v-model="value" :result.sync="result1" placeholder="搜索你想要的锦囊"></mt-search>
     <div class="jn-nav">
-      <div class="jn-nav1" v-for="(item,index) in result" :key="index" @click="aaa(index)">
+      <div
+        class="jn-nav1"
+        v-for="(item,index) in result"
+        :key="index"
+        @click="parent(index,item.name)"
+        :class="{active:item.name == flagActive}"
+      >
         {{item.nav}}
         <span class="bor"></span>
       </div>
     </div>
-    <jn-list :title="aaaa"></jn-list>
-    <!-- <ul class="guideList">
-      <li v-for="item in list" :key="item.name">
-        <a>
-          <p class="pic">
-            <img :src="item.img" alt />
-          </p>
-          <h3 class="name">{{item.name}}</h3>
-          <p class="locate">{{item.locate}}</p>
-        </a>
-      </li>
-    </ul>-->
+    <jn-list :title="childrenCom" v-cloak></jn-list>
     <div class="guideDown">
       <h3 class="caption">喜欢穷游锦囊？下载穷游锦囊APP离线看。</h3>
       <dl class="icons">
@@ -46,8 +41,8 @@
     </div>
     <footer class="mFooter">
       <p class="sign">
-        <a data-bn-ipg="login-bottom" @click.prevent="goto('login')">登录</a> ｜
-        <a data-bn-ipg="foot-register">注册</a>
+        <a data-bn-ipg="login-bottom" @click.prevent="goLog('login')">登录</a> ｜
+        <a data-bn-ipg="foot-register" @click.prevent="goReg('register')">注册</a>
       </p>
       <p class="nav">
         <a data-bn-ipg="foot-home">穷游首页</a>｜
@@ -100,7 +95,7 @@ export default {
         { nav: "非洲", name: "africa" },
         { nav: "南极洲", name: "antarctica" }
       ],
-      aaaa: {},
+      childrenCom: {},
       list: [
         [
           {
@@ -358,339 +353,34 @@ export default {
             locate: "南极"
           }
         ]
-      ]
-      // list: [
-      //   {
-      //     hot: [
-      //       {
-      //         img: require("../assets/img/chaoxian.jpg"),
-      //         name: "朝鲜",
-      //         locate: "朝鲜"
-      //       },
-      //       {
-      //         img: require("../assets/img/nasa.jpg"),
-      //         name: "NASA太空探索指南",
-      //         locate: "美国"
-      //       },
-      //       {
-      //         img: require("../assets/img/qy.jpg"),
-      //         name: "《权力的游戏》",
-      //         locate: "专题"
-      //       },
-      //       {
-      //         img: require("../assets/img/bael.jpg"),
-      //         name: "北爱尔兰",
-      //         locate: "英国"
-      //       },
-      //       {
-      //         img: require("../assets/img/kldy.jpg"),
-      //         name: "克罗地亚",
-      //         locate: "克罗地亚"
-      //       },
-      //       {
-      //         img: require("../assets/img/adlxy.jpg"),
-      //         name: "安达卢西亚",
-      //         locate: "西班牙"
-      //       }
-      //     ]
-      //   },
-      //   {
-      //     asia: [
-      //       {
-      //         img: require("../assets/img/chaoxian.jpg"),
-      //         name: "a",
-      //         locate: "朝鲜b"
-      //       },
-      //       {
-      //         img: require("../assets/img/nasa.jpg"),
-      //         name: "NASA太空探索指南",
-      //         locate: "美国"
-      //       },
-      //       {
-      //         img: require("../assets/img/qy.jpg"),
-      //         name: "《权力的游戏》",
-      //         locate: "专题"
-      //       },
-      //       {
-      //         img: require("../assets/img/bael.jpg"),
-      //         name: "北爱尔兰",
-      //         locate: "英国"
-      //       },
-      //       {
-      //         img: require("../assets/img/kldy.jpg"),
-      //         name: "克罗地亚",
-      //         locate: "克罗地亚"
-      //       },
-      //       {
-      //         img: require("../assets/img/adlxy.jpg"),
-      //         name: "安达卢西亚",
-      //         locate: "西班牙"
-      //       }
-      //     ]
-      //   },
-      //   {
-      //     europe: [
-      //       {
-      //         img: require("../assets/img/chaoxian.jpg"),
-      //         name: "a",
-      //         locate: "朝鲜b"
-      //       },
-      //       {
-      //         img: require("../assets/img/nasa.jpg"),
-      //         name: "NASA太空探索指南",
-      //         locate: "美国"
-      //       },
-      //       {
-      //         img: require("../assets/img/qy.jpg"),
-      //         name: "《权力的游戏》",
-      //         locate: "专题"
-      //       },
-      //       {
-      //         img: require("../assets/img/bael.jpg"),
-      //         name: "北爱尔兰",
-      //         locate: "英国"
-      //       },
-      //       {
-      //         img: require("../assets/img/kldy.jpg"),
-      //         name: "克罗地亚",
-      //         locate: "克罗地亚"
-      //       },
-      //       {
-      //         img: require("../assets/img/adlxy.jpg"),
-      //         name: "安达卢西亚",
-      //         locate: "西班牙"
-      //       }
-      //     ]
-      //   },
-      //   {
-      //     northAmerica: [
-      //       {
-      //         img: require("../assets/img/chaoxian.jpg"),
-      //         name: "aaa",
-      //         locate: "朝鲜gc"
-      //       },
-      //       {
-      //         img: require("../assets/img/nasa.jpg"),
-      //         name: "NASA太空探索指南",
-      //         locate: "美国"
-      //       },
-      //       {
-      //         img: require("../assets/img/qy.jpg"),
-      //         name: "《权力的游戏》",
-      //         locate: "专题"
-      //       },
-      //       {
-      //         img: require("../assets/img/bael.jpg"),
-      //         name: "北爱尔兰",
-      //         locate: "英国"
-      //       },
-      //       {
-      //         img: require("../assets/img/kldy.jpg"),
-      //         name: "克罗地亚",
-      //         locate: "克罗地亚"
-      //       },
-      //       {
-      //         img: require("../assets/img/adlxy.jpg"),
-      //         name: "安达卢西亚",
-      //         locate: "西班牙"
-      //       }
-      //     ]
-      //   },
-
-      //   {
-      //     southAmerica: [
-      //       {
-      //         img: require("../assets/img/chaoxian.jpg"),
-      //         name: "123",
-      //         locate: "朝鲜312"
-      //       },
-      //       {
-      //         img: require("../assets/img/nasa.jpg"),
-      //         name: "NASA太空探索指南",
-      //         locate: "美国"
-      //       },
-      //       {
-      //         img: require("../assets/img/qy.jpg"),
-      //         name: "《权力的游戏》",
-      //         locate: "专题"
-      //       },
-      //       {
-      //         img: require("../assets/img/bael.jpg"),
-      //         name: "北爱尔兰",
-      //         locate: "英国"
-      //       },
-      //       {
-      //         img: require("../assets/img/kldy.jpg"),
-      //         name: "克罗地亚",
-      //         locate: "克罗地亚"
-      //       },
-      //       {
-      //         img: require("../assets/img/adlxy.jpg"),
-      //         name: "安达卢西亚",
-      //         locate: "西班牙"
-      //       }
-      //     ]
-      //   },
-
-      //   {
-      //     oceania: [
-      //       {
-      //         img: require("../assets/img/chaoxian.jpg"),
-      //         name: "a11",
-      //         locate: "朝鲜b34"
-      //       },
-      //       {
-      //         img: require("../assets/img/nasa.jpg"),
-      //         name: "NASA太空探索指南",
-      //         locate: "美国"
-      //       },
-      //       {
-      //         img: require("../assets/img/qy.jpg"),
-      //         name: "《权力的游戏》",
-      //         locate: "专题"
-      //       },
-      //       {
-      //         img: require("../assets/img/bael.jpg"),
-      //         name: "北爱尔兰",
-      //         locate: "英国"
-      //       },
-      //       {
-      //         img: require("../assets/img/kldy.jpg"),
-      //         name: "克罗地亚",
-      //         locate: "克罗地亚"
-      //       },
-      //       {
-      //         img: require("../assets/img/adlxy.jpg"),
-      //         name: "安达卢西亚",
-      //         locate: "西班牙"
-      //       }
-      //     ]
-      //   },
-
-      //   {
-      //     africa: [
-      //       {
-      //         img: require("../assets/img/chaoxian.jpg"),
-      //         name: "agg",
-      //         locate: "朝鲜bgg"
-      //       },
-      //       {
-      //         img: require("../assets/img/nasa.jpg"),
-      //         name: "NASA太空探索指南",
-      //         locate: "美国"
-      //       },
-      //       {
-      //         img: require("../assets/img/qy.jpg"),
-      //         name: "《权力的游戏》",
-      //         locate: "专题"
-      //       },
-      //       {
-      //         img: require("../assets/img/bael.jpg"),
-      //         name: "北爱尔兰",
-      //         locate: "英国"
-      //       },
-      //       {
-      //         img: require("../assets/img/kldy.jpg"),
-      //         name: "克罗地亚",
-      //         locate: "克罗地亚"
-      //       },
-      //       {
-      //         img: require("../assets/img/adlxy.jpg"),
-      //         name: "安达卢西亚",
-      //         locate: "西班牙"
-      //       }
-      //     ]
-      //   },
-
-      //   {
-      //     antarctica: [
-      //       {
-      //         img: require("../assets/img/chaoxian.jpg"),
-      //         name: "aaa",
-      //         locate: "朝鲜bggg2"
-      //       },
-      //       {
-      //         img: require("../assets/img/nasa.jpg"),
-      //         name: "NASA太空探索指南",
-      //         locate: "美国"
-      //       },
-      //       {
-      //         img: require("../assets/img/qy.jpg"),
-      //         name: "《权力的游戏》",
-      //         locate: "专题"
-      //       },
-      //       {
-      //         img: require("../assets/img/bael.jpg"),
-      //         name: "北爱尔兰",
-      //         locate: "英国"
-      //       },
-      //       {
-      //         img: require("../assets/img/kldy.jpg"),
-      //         name: "克罗地亚",
-      //         locate: "克罗地亚"
-      //       },
-      //       {
-      //         img: require("../assets/img/adlxy.jpg"),
-      //         name: "安达卢西亚",
-      //         locate: "西班牙"
-      //       }
-      //     ]
-      //   }
-      // ]
-      // list: [
-      //   {
-      //     img: require("../assets/img/chaoxian.jpg"),
-      //     name: "朝鲜",
-      //     locate: "朝鲜"
-      //   },
-      //   {
-      //     img: require("../assets/img/nasa.jpg"),
-      //     name: "NASA太空探索指南",
-      //     locate: "美国"
-      //   },
-      //   {
-      //     img: require("../assets/img/qy.jpg"),
-      //     name: "《权力的游戏》",
-      //     locate: "专题"
-      //   },
-      //   {
-      //     img: require("../assets/img/bael.jpg"),
-      //     name: "北爱尔兰",
-      //     locate: "英国"
-      //   },
-      //   {
-      //     img: require("../assets/img/kldy.jpg"),
-      //     name: "克罗地亚",
-      //     locate: "克罗地亚"
-      //   },
-      //   {
-      //     img: require("../assets/img/adlxy.jpg"),
-      //     name: "安达卢西亚",
-      //     locate: "西班牙"
-      //   }
-      // ]
+      ],
+      flagActive: "hot"
     };
   },
   methods: {
     handleClose() {
+      console.log("window.history", window.history);
+      console.log("window.history.length", window.history.length);
       this.router.go(-1);
     },
-    goto(name) {
+    // 跳转登录
+    goLog(name) {
       this.$router.push({ name });
     },
-    golist(name) {
-      this.$router.push({ name });
+
+    // 组件通讯
+    parent(index, name) {
+      this.childrenCom = this.list[index];
+      // 高亮
+      this.flagActive = name;
     },
-    aaa(index) {
-      // console.log(index);
-      this.aaaa = this.list[index];
-      // return this.list[index];
+    // 跳转注册
+    goReg(name) {
+      this.$router.push({ name });
     }
   },
   mounted() {
-    // console.log(this.route);
-    this.aaaa = this.list[0];
-    console.log(123);
+    this.childrenCom = this.list[0];
   },
   components: {
     jnList
@@ -698,6 +388,16 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+[v-clock] {
+  display: none;
+}
+
+.active {
+  color: #fff;
+  background-color: #ed323c;
+  border-radius: 3px;
+}
+
 body {
   width: 100%;
   background-color: #ecece5;
@@ -756,60 +456,6 @@ body {
   height: 22px;
   background: #e7e7e7;
 }
-
-// .guideList {
-//   margin: 10px auto;
-//   width: 96%;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   flex-wrap: wrap;
-
-//   background-color: #fff;
-//   border: 1px solid #dadada;
-//   box-shadow: 0 2px 2px rgba(218, 218, 218, 0.4);
-
-//   li {
-//     width: 33%;
-//     border-right: 1px solid #dadada;
-//     border-bottom: 1px solid #dadada;
-
-//     &:nth-child(3n) {
-//       border-right: none;
-//     }
-//     a {
-//       display: flex;
-//       justify-content: center;
-//       align-items: center;
-//       flex-direction: column;
-
-//       padding: 10px 0;
-//       text-align: center;
-
-//       .name {
-//         padding-top: 5px;
-//         font-size: 13px;
-//         color: #2c2c2c;
-//         font-weight: 400;
-//       }
-
-//       .pic {
-//         img {
-//           display: block;
-//           margin: 0 auto;
-//           width: 64px;
-//           height: 96px;
-//         }
-//       }
-
-//       .locate {
-//         font-size: 11px;
-//         line-height: 15px;
-//         color: #939393;
-//       }
-//     }
-//   }
-// }
 
 h3 {
   font-size: 100%;
