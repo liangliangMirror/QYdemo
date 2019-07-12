@@ -25,7 +25,7 @@
       />
     </van-cell-group>
     <span class="login-tips">未注册手机号验证后自动创建</span>
-    <van-button round type="danger">下一步</van-button>
+    <van-button round type="danger">登录</van-button>
     <div class="bot">
       <div class="logpass" @click="goReg('register')">账号注册</div>
       <div class="log-help">需要帮助？</div>

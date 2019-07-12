@@ -20,7 +20,7 @@
         <span class="bor"></span>
       </div>
     </div>
-    <jn-list :title="childrenCom"></jn-list>
+    <jn-list :title="childrenCom" v-cloak></jn-list>
     <div class="guideDown">
       <h3 class="caption">喜欢穷游锦囊？下载穷游锦囊APP离线看。</h3>
       <dl class="icons">
@@ -359,15 +359,14 @@ export default {
   },
   methods: {
     handleClose() {
+      console.log("window.history", window.history);
+      console.log("window.history.length", window.history.length);
       this.router.go(-1);
     },
     // 跳转登录
     goLog(name) {
       this.$router.push({ name });
     },
-    // golist(name) {
-    //   this.$router.push({ name });
-    // },
 
     // 组件通讯
     parent(index, name) {
@@ -389,6 +388,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+[v-clock] {
+  display: none;
+}
+
 .active {
   color: #fff;
   background-color: #ed323c;
