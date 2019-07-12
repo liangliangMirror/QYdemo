@@ -12,6 +12,7 @@
         right-icon="question-o"
         placeholder="请输入手机号码"
         @blur="vertifyPhone"
+    
       />
     </van-cell-group>
     <van-cell-group>
@@ -86,22 +87,28 @@ export default {
     // 注册
     reg() {
       if (this.regFlag) {
-        this.$axios
-          .post("http://localhost:3000/reg", {
-            phone: this.phone,
-            password: this.password
-          })
-          .then(({ data }) => {
-            console.log("data:", data);
-            console.log("data.code:", data.code);
+        if (this.password.trim()) {
+          this.$axios
+            .post("http://localhost:3000/reg", {
+              phone: this.phone,
+              password: this.password
+            })
+            .then(({ data }) => {
+              console.log("data:", data);
+              console.log("data.code:", data.code);
 
-            if (data.code == 1000) {
-              this.$router.replace({ name: "login" });
-            } else {
-              console.log("6666");
-            }
-          });
+              if (data.code == 1000) {
+                this.$router.replace({ name: "login" });
+              } else {
+                console.log("6666");
+              }
+            });
+        } else {
+          alert("密码不能为空");
+        }
       } else {
+        // this.$refs.title.focus();
+
         alert("手机号码已注册，请更换");
       }
     }
