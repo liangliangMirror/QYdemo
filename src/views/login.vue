@@ -27,7 +27,7 @@ import { NavBar } from "vant";
 import { Field } from "vant";
 import { CellGroup } from "vant";
 import { Button } from "vant";
-import { mapState, mapMutations } from "vuex";
+
 Vue.use(Field);
 Vue.use(NavBar);
 Vue.use(CellGroup);
@@ -47,7 +47,6 @@ export default {
 
   methods: {
     backto() {
-      // this.$router.push({});
       console.log(this.history);
       console.log(this.$router.go);
       this.$router.go(-1);
