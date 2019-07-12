@@ -97,7 +97,6 @@ export default {
             this.drr = key * 1 + this.crr;
             this.items[this.drr] = response.data.data[key];
           }
-          console.log(this.items);
           this.jiazai = "加载更多内容";
           this.crr += 15;
         })
