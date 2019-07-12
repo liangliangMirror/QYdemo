@@ -1,16 +1,17 @@
 <template>
   <div>
     <van-nav-bar title="穷游网" left-arrow @click-left="backto" />
-    <h2>登录</h2>
+    <h2>注册</h2>
     <van-cell-group>
       <div class="font-num">+86</div>
       <van-field
         style="display:inline-block;width:90%;"
-        v-model="username"
+        v-model="phone"
         required
         clearable
         right-icon="question-o"
-        placeholder="请输入账号/手机号码"
+        placeholder="请输入手机号码"
+        @blur="vertifyPhone"
       />
     </van-cell-group>
     <van-cell-group>
@@ -25,16 +26,15 @@
       />
     </van-cell-group>
     <span class="login-tips">未注册手机号验证后自动创建</span>
-    <van-button round type="danger">登录</van-button>
+    <van-button round type="danger" @click="reg">下一步</van-button>
     <div class="bot">
-      <div class="logpass" @click="goReg('register')">账号注册</div>
+      <div class="logpass" @click="goLog('login')">账号密码登录</div>
       <div class="log-help">需要帮助？</div>
     </div>
   </div>
 </template>
 <script>
 import Vue from "vue";
-import { Header, Button } from "mint-ui";
 import { NavBar } from "vant";
 import { Field } from "vant";
 import { CellGroup } from "vant";
@@ -48,16 +48,62 @@ Vue.use(Button);
 export default {
   data() {
     return {
-      username: "",
-      password: ""
+      phone: "",
+      password: "",
+      regFlag: "false"
     };
   },
   methods: {
     backto() {
       this.$router.go(-1);
     },
-    goReg(name) {
+    goLog(name) {
       this.$router.push({ name });
+    },
+    vertifyPhone() {
+      console.log(787878);
+      if (this.phone) {
+        this.$axios
+          .get("http://localhost:3000/reg/check", {
+            params: {
+              phone: this.phone
+            }
+          })
+          .then(({ data }) => {
+            if (data.code == 250) {
+              this.regFlag = false;
+              alert("账号已存在");
+            } else if (data.code == 1000) {
+              this.regFlag = true;
+              console.log("ojbkReg~~~");
+            }
+          });
+      } else {
+        console.log("手机号不能为空");
+      }
+    },
+
+    // 注册
+    reg() {
+      if (this.regFlag) {
+        this.$axios
+          .post("http://localhost:3000/reg", {
+            phone: this.phone,
+            password: this.password
+          })
+          .then(({ data }) => {
+            console.log("data:", data);
+            console.log("data.code:", data.code);
+
+            if (data.code == 1000) {
+              this.$router.replace({ name: "login" });
+            } else {
+              console.log("6666");
+            }
+          });
+      } else {
+        alert("手机号码已注册，请更换");
+      }
     }
   }
 };
