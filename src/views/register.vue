@@ -12,7 +12,6 @@
         right-icon="question-o"
         placeholder="请输入手机号码"
         @blur="vertifyPhone"
-    
       />
     </van-cell-group>
     <van-cell-group>
@@ -22,8 +21,10 @@
         v-model="password"
         required
         clearable
+        type="password"
         right-icon="question-o"
         placeholder="请输入密码"
+        maxlength="11"
       />
     </van-cell-group>
     <span class="login-tips">未注册手机号验证后自动创建</span>
@@ -62,25 +63,34 @@ export default {
       this.$router.push({ name });
     },
     vertifyPhone() {
-      console.log(787878);
-      if (this.phone) {
-        this.$axios
-          .get("http://localhost:3000/reg/check", {
-            params: {
-              phone: this.phone
-            }
-          })
-          .then(({ data }) => {
-            if (data.code == 250) {
-              this.regFlag = false;
-              alert("账号已存在");
-            } else if (data.code == 1000) {
-              this.regFlag = true;
-              console.log("ojbkReg~~~");
-            }
-          });
+      let reg = /^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
+
+      console.log(reg.test(this.phone));
+
+      if (reg.test(this.phone)) {
+        if (this.phone) {
+          this.$axios
+            .get("http://localhost:3000/reg/check", {
+              params: {
+                phone: this.phone
+              }
+            })
+            .then(({ data }) => {
+              if (data.code == 250) {
+                this.regFlag = false;
+                alert("账号已存在");
+                return;
+              } else if (data.code == 1000) {
+                this.regFlag = true;
+                console.log("ojbkReg~~~");
+              }
+            });
+        } else {
+          console.log("手机号不能为空");
+        }
       } else {
-        console.log("手机号不能为空");
+        this.regFlag = false;
+        alert("请输入正确的手机号码");
       }
     },
 
@@ -116,6 +126,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.van-icon-arrow-left {
+  &:before {
+    color: #000;
+  }
+}
+
 h2 {
   color: #000;
   padding-left: 1.7rem;
