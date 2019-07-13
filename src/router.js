@@ -89,12 +89,12 @@ export default new Router({
       name: 'city',
       component: City,
     }, {
-      path:'/aaa',
-      name:'aaa',
+      path: '/aaa',
+      name: 'aaa',
       component: Aaa,
     }, {
-      path:'/discounts',
-      name:'discounts',
+      path: '/discounts',
+      name: 'discounts',
       component: Discounts,
     },
     {

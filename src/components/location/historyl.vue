@@ -1,10 +1,12 @@
 <template>
   <div class="city-list-box history">
-    <h6>访问历史</h6>
     <ul class="city-list-landscape clearfix">
-      <li v-for="item in title" :key="item">
+      <li v-for="(item,index) in title.arr" :key="item">
         <a class="qui-place-link">
-          <span class="qui-ellipsis qui-ellipsis-1">{{item}}</span>
+          <span
+            class="qui-ellipsis qui-ellipsis-1"
+            @click="go(title.arr[index],title.pinyin[index])"
+          >{{item}}</span>
         </a>
       </li>
     </ul>
@@ -12,7 +14,12 @@
 </template>
 <script>
 export default {
-  props: ["title"]
+  props: ["title"],
+  methods: {
+    go(cityname, id) {
+      this.$router.push({ name: "city", params: { cityname, id } });
+    }
+  }
 };
 </script>
 
@@ -20,14 +27,7 @@ export default {
 .city-list-box {
   position: relative;
 }
-h6 {
-  line-height: 1;
-  font-size: 12px;
-  margin: 0 12px;
-  border: 0;
-  padding-top: 6px;
-  font-weight: 400;
-}
+
 .city-list-landscape {
   margin: 2.5px 3px 5px;
   zoom: 1;

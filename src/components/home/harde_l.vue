@@ -97,7 +97,7 @@ export default {
 
   methods: {
     Search() {
-      this.$router.push({ path: "/city" });
+      this.$router.push({ path: "/location" });
     },
     login() {
       this.$router.push({ path: "/login" });

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <harde-l v-if="isok" />
+    <harde-l />
     <swpie-l></swpie-l>
     <nav-l></nav-l>
     <discount-L></discount-L>
@@ -13,7 +13,6 @@
 <script>
 // @ is an alias to /src
 // import "mint-ui/lib/style.css";
-import { mapState } from "vuex";
 import hardeL from "../components/home/harde_l.vue";
 import swpieL from "../components/home/swpie.vue";
 import navL from "../components/home/navl.vue";
@@ -31,13 +30,6 @@ export default {
     ployL,
     strategyL,
     footL
-  },
-  computed: {
-    ...mapState({
-      isok(state) {
-        return state.harde;
-      }
-    })
   }
 };
 </script>

@@ -21,9 +21,17 @@ li {
 </style>
 
 <script>
-
 import "mint-ui/lib/style.css";
 import "vant/lib/index.css";
+import { mapActions } from "vuex";
 export default {
-}
+  methods: {
+    ...mapActions({
+      pushhistorys: "pushhistorys"
+    })
+  },
+  mounted() {
+    this.pushhistorys();
+  }
+};
 </script>

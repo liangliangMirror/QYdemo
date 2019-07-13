@@ -7,14 +7,18 @@
 </template>
 
 <style lang="scss">
-*{margin: 0;padding: 0;}
-body,html{
-    height: 100%;
+* {
+  margin: 0;
+  padding: 0;
 }
-#box{
-    height: 100%;
-    overflow-x:hidden;
-    width:100%;
+body,
+html {
+  height: 100%;
+}
+#box {
+  height: 100%;
+  overflow-x: hidden;
+  width: 100%;
 }
 </style>
 
@@ -27,11 +31,10 @@ import footerE from "../components/footer_e";
 export default {
   data() {
     return {
-      selected: "1",
-      
+      selected: "1"
     };
   },
-  components:{
+  components: {
     headerT,
     mainR,
     footerE

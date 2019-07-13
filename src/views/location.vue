@@ -3,7 +3,10 @@
     <van-nav-bar title="切换国家城市" left-text="返回" left-arrow @click-left="onClickLeft" />
     <selfmotion-l></selfmotion-l>
     <van-search placeholder="请输入搜索关键词" v-model="value" />
-    <history-l v-if="historyl.length" :title="historyl"></history-l>
+    <h6 v-if="historyl.arr.length">{{"访问记录"}}</h6>
+    <history-l v-if="historyl.arr.length" :title="historyl"></history-l>
+    <h6>{{"热门城市"}}</h6>
+    <history-l :title="city"></history-l>
     <city-list-l></city-list-l>
   </div>
 </template>
@@ -23,14 +26,27 @@ Vue.use(mapState)
   .use(selfmotionL);
 export default {
   methods: {
-    onClickLeft() {},
+    onClickLeft() {
+      this.$router.go(-1);
+    },
     ...mapMutations({
       inputvalue: "inputvalue"
     })
   },
   data() {
     return {
-      value: null
+      value: null,
+      city: {
+        arr: ["蚌埠市", "鞍山市", "安庆市", "阿拉尔市", "郴州市", "安阳市"],
+        pinyin: [
+          "BangBuShi",
+          "AnShanShi",
+          "AnQingShi",
+          "ALaErShi",
+          "ChenZhouShi",
+          "AnYangShi"
+        ]
+      }
     };
   },
   components: {
@@ -65,5 +81,13 @@ export default {
 }
 .van-nav-bar .van-icon {
   color: #fff;
+}
+h6 {
+  line-height: 1;
+  font-size: 12px;
+  margin: 0 12px;
+  border: 0;
+  padding-top: 6px;
+  font-weight: 400;
 }
 </style>

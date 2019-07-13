@@ -3,6 +3,7 @@
     <span class="icon-place icon-place-front-sight" v-if="isok" @click="fresh">
       <van-icon name="location-o" color="#0cbf79" />
       &nbsp;{{location}}
+      <b>重新定位</b>
     </span>
     <van-loading color="#1989fa" v-else />
   </div>
@@ -22,7 +23,6 @@ export default {
   data() {
     return {
       isok: true,
-      locations: ""
     };
   },
   created() {
