@@ -41,16 +41,13 @@ vue2.5+vuex+vue-router+webpack+ES6/7+axios+sass+Vant ui
 
 ### 主页
 
-<img src="./qydemo/src/assets/demoimg/dome1.png" width="365" height="619"/> <img src="https://github.com/bailicangdu/vue2-elm/blob/master/screenshots/msite.gif" width="365" height="619"/>
+<img src="./src/assets/demoimg/dome1.png" width="365" height="619"/> 
+<img src="./src/assets/demoimg/dome3.gif" width="365" height="619"/> 
 
-
-### 主页瀑布流无限加载
-
-<img src="./qydemo/src/assets/demoimg/dome3.gif" width="365" height="619"/> <img src="https://github.com/bailicangdu/vue2-elm/blob/master/screenshots/msite.gif" width="365" height="619"/>
 
 ### 自动定位
 
-<img src="./qydemo/src/assets/demoimg/dome2.png" width="365" height="619"/> <img src="https://github.com/bailicangdu/vue2-elm/blob/master/screenshots/msite.gif" width="365" height="619"/>
+<img src="./src/assets/demoimg/dome2.png" width="365" height="619"/>
 
 
 ## 项目目标
