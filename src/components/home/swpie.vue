@@ -3,6 +3,9 @@
     <van-swipe-item>
       <img src="https://picb2b.qyer.com/FuhcpbmD6CmLSmyIiDa4C9JR9KPv" alt class="imgs" />
     </van-swipe-item>
+    <van-swipe-item>
+      <img src="https://zworld.qyerstatic.com/web/project/index/images/ad/ad2.jpg" alt class="imgs" />
+    </van-swipe-item>
   </van-swipe>
 </template>
 <script>

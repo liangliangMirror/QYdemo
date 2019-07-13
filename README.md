@@ -54,6 +54,7 @@ vue2.5+vue-cli+vuex+vue-router+webpack+ES6/7+axios+sass+Vant ui
 - [x] 定位功能 -- 完成
 - [x] 选择城市 -- 完成
 - [x] 搜索地址 -- 完成
+- [x] 轮播图 -- 完成
 - [x] 主页瀑布流 -- 完成
 - [x] 登录、注册 -- 完成
 - [x] 城市详情页 -- 完成
@@ -68,6 +69,7 @@ vue2.5+vue-cli+vuex+vue-router+webpack+ES6/7+axios+sass+Vant ui
   - 梁唯汉
     - 主页数据的渲染
     - 主页请求axios的瀑布流
+    - 主页的轮播图
     - 自动定位
     - 城市的模糊查询/中文英语都ok
     - 搜索记录的localStorage的应用
@@ -80,6 +82,7 @@ vue2.5+vue-cli+vuex+vue-router+webpack+ES6/7+axios+sass+Vant ui
     - 景区观光页的下拉加载
     - 景区观光页的下拉菜单/筛选
     - vantUi的熟练应用
+    - 产品详情的页面搭建
   
   - 吴广君
     - 登入/注册
