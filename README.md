@@ -8,7 +8,7 @@
 
 ## 技术栈
 
-vue2.5+vuex+vue-router+webpack+ES6/7+axios+sass+Vant ui 
+vue2.5+vue-cli+vuex+vue-router+webpack+ES6/7+axios+sass+Vant ui 
 
 ## 项目运行
 
@@ -27,7 +27,7 @@ vue2.5+vuex+vue-router+webpack+ES6/7+axios+sass+Vant ui
 
 ## 关于接口数据
 
-此项目的所有接口数据都来源于配套的后台系统，[后台项目传送地址。](http://www.baodu.com)
+此项目的所有接口数据都来源于配套的后台系统，[后台项目传送地址。](https://www.baidu.com)
 
 如果想体验前后台同时开发，可以下载后台系统。
 
@@ -35,19 +35,18 @@ vue2.5+vuex+vue-router+webpack+ES6/7+axios+sass+Vant ui
 
 - [穷游网官网 (￣_,￣ )](https://www.qyer.com/)
 
-- [我们的demo (๑•̀ㅂ•́)و✧](http://www.baodu.com)
+- [我们的demo (๑•̀ㅂ•́)و✧](https://www.baidu.com)
 
 ## 部分截图
 
 ### 主页
 
-<img src="./src/assets/demoimg/dome1.png" width="365" height="619"/> 
-<img src="./src/assets/demoimg/dome3.gif" width="365" height="619"/> 
+<img src="https://github.com/gzh51904/qiongyou/blob/dev/src/assets/demoimg/dome1.png" width="365" height="619"/> <img src="https://github.com/gzh51904/qiongyou/blob/dev/src/assets/demoimg/dome3.gif" width="365" height="619"/> 
 
 
 ### 自动定位
 
-<img src="./src/assets/demoimg/dome2.png" width="365" height="619"/>
+<img src="https://github.com/gzh51904/qiongyou/blob/dev/src/assets/demoimg/dome2.png" width="365" height="619"/>
 
 
 ## 项目目标
@@ -61,6 +60,34 @@ vue2.5+vuex+vue-router+webpack+ES6/7+axios+sass+Vant ui
 - [x] 产品详情页 -- 完成
 - [ ] 个人中心 --  1/2
 - [ ] 修改密码 -- 未完成
+
+
+## 项目职责
+
+- 项目分配
+  - 梁唯汉
+    - 主页数据的渲染
+    - 主页请求axios的瀑布流
+    - 自动定位
+    - 城市的模糊查询/中文英语都ok
+    - 搜索记录的localStorage的应用
+    - 搜索页的数据处理
+    - 项目的分配和管理
+  
+  - 刘骏
+    - 城市页面的数据渲染
+    - 景区观光页的数据渲染
+    - 景区观光页的下拉加载
+    - 景区观光页的下拉菜单/筛选
+    - vantUi的熟练应用
+  
+  - 吴广君
+    - 登入/注册
+    - 锦囊页数据渲染
+    - nodeJs的搭配使用
+    - 服务器的搭建
+    - 注册登入的校验
+    - mongdb的简单应用
 
 
 ## 项目布局
