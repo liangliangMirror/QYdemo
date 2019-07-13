@@ -21,7 +21,7 @@
                     </li>
     </ul>
     <div class="zhe">
-      <span >﹀</span>
+      <span>﹀</span>
     </div>
 </div>
    
@@ -39,18 +39,33 @@ export default {
       value2: 'a',
       option1: [
         { text: '景点观光', value: 0 },
-        { text: '新款商品', value: 1 },
-        { text: '活动商品', value: 2 }
+        { text: '美食', value: 1 },
+        { text: '休闲娱乐', value: 2 },
+        { text: '赛事演出', value: 3 },
+        { text: '运动户外', value: 4 },
+        { text: '游览路线', value: 5 },
+        { text: '文化活动', value: 6 },
+        { text: '热门商圈', value: 7 },
       ],
       option2: [
         { text: '筛选', value: 'a' },
-        { text: '好评排序', value: 'b' },
-        { text: '销量排序', value: 'c' },
+        { text: '学生', value: 'b' },
+        { text: '历史', value: 'c' },
+        { text: '背包客', value: 'd' },
+        { text: '亲子', value: 'e' },
+        { text: '摄影', value: 'f' },
+        { text: '有厕所', value: 'g' },
+        { text: 'WiFi', value: 'h' },
+        { text: '儿童游乐区', value: 'i' },
+        { text: '有包房', value: 'j' },
+        { text: '可就餐', value: 'k' },
+        { text: '可购纪念品', value: 'l' },
       ],
       option3: [
         { text: '默认排序', value: 'a' },
-        { text: '好评排序', value: 'b' },
-        { text: '销量排序', value: 'c' },
+        { text: '离我最近', value: 'b' },
+        { text: '人气最高', value: 'c' },
+        { text: '评价最好', value: 'd' },
       ],
       tree:[{
 
@@ -106,11 +121,8 @@ export default {
   height: 20px;
   text-align: center;
   border-bottom: 1px solid #ccc;
+  
 }
-.zhe:active .fold{
-  height: 199px;
-}
-
 
 </style>
 

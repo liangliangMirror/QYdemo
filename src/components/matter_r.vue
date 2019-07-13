@@ -21,7 +21,14 @@
                                 <span class="icon-place icon-place-star-fill"></span><span class="icon-place icon-place-star-fill"></span><span class="icon-place icon-place-star-fill"></span><span class="icon-place icon-place-star-fill"></span><span class="icon-place icon-place-star-half"></span>
                             </div>
                             <span class="poi-points">
-                                    9.4
+                                    <van-rate
+                                    v-model="value"
+                                    allow-half
+                                    void-icon="star"
+                                    void-color="#eee"
+                                    size="10"
+
+                                    />
                             </span>
                             <span class="poi-person">5856人去过</span>
                             <div class="poi-tags-distance">
@@ -47,15 +54,18 @@
 </template>
 
 <script>
-import { List } from 'vant';
+import { List, Rate } from 'vant';
 import Vue from 'vue';
 Vue.use(List);
+Vue.use(Rate);
 export default {
     data(){
         return{
-            list:[{},{},{},{},{}],
+            list:[{
+            },{},{},{},{}],
             loading: false,
-            finished: false
+            finished: false,
+            value:4.5
         }
     },
     methods: {
@@ -126,6 +136,7 @@ export default {
                     line-height: 1.2;
                     display: block;
                     font-weight: 700;
+                    margin-bottom: 6px;
                 }
                 .poi-star{
                     color: #0cbf79;
@@ -136,6 +147,9 @@ export default {
                         font-size: 12px;
                         color: #444;
                         margin-left: 4px;
+                        div{
+                            float: left;
+                        }
                     }
                 .poi-person{
                         border-left: 1px solid #e1e1e1;
@@ -146,7 +160,7 @@ export default {
                 }
                 .poi-tags-distance{
                     color: #848484;
-                    margin-top: 12px;
+                    margin-top: 8px;
                     position: relative;
                     padding-right: 10px;
                     line-height: 12px;

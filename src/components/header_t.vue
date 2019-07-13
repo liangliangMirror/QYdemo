@@ -11,7 +11,6 @@ export default {
     methods:{
       home(){
         this.$router.push({ path:'/home'});
-        // console.log(this)
       }
     }
 }
