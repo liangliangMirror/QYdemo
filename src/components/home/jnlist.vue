@@ -53,6 +53,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+
 .guideList {
   margin: 10px auto;
   width: 96%;

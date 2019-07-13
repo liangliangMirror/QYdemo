@@ -86,6 +86,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.van-icon-arrow-left {
+  &:before {
+    color: #000;
+  }
+}
+
 h2 {
   color: #000;
   padding-left: 1.7rem;

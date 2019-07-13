@@ -9,7 +9,7 @@ import Discounts from './views/discounts.vue'
 import Aaa from './views/aaa.vue'
 import Location from './views/location.vue'
 import Jnlist from './components/home/jnlist.vue'
-
+import Inlogin from './views/inlogin.vue'
 
 Vue.use(Router)
 
@@ -89,13 +89,18 @@ export default new Router({
       name: 'city',
       component: City,
     }, {
-      path:'/aaa',
-      name:'aaa',
+      path: '/aaa',
+      name: 'aaa',
       component: Aaa,
     }, {
-      path:'/discounts',
-      name:'discounts',
+      path: '/discounts',
+      name: 'discounts',
       component: Discounts,
+    },
+    {
+      path: '/inlogin',
+      name: 'inlogin',
+      component: Inlogin
     },
     {
       path: '/',
