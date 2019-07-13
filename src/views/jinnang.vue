@@ -387,164 +387,170 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-[v-clock] {
-  display: none;
-}
-
-.active {
-  color: #fff;
-  background-color: #ed323c;
-  border-radius: 3px;
-}
-
-body {
-  width: 100%;
-  background-color: #ecece5;
-}
-
-.mint-header {
-  background-color: #252525;
-  position: relative;
-}
-
-.mint-searchbar-inner .mintui-search {
-  font-size: 1.125rem !important;
-}
-.mint-searchbar-core {
-  font-size: 0.75rem !important;
-}
-.mint-search {
-  height: 9vh;
-}
-
+<style lang="scss">
 .jinnang {
-  width: 100%;
-}
-
-.jn-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
-  background-color: #fff;
-
-  .jn-nav1 {
-    position: relative;
-
-    text-align: center;
-    line-height: 32px;
-    width: 24.3%;
-    height: 32px;
-
-    &:nth-child(1),
-    &:nth-child(2),
-    &:nth-child(3),
-    &:nth-child(4) {
-      border-bottom: 1px solid #e7e7e7;
-    }
-  }
-}
-
-.bor {
-  position: absolute;
-  left: -0.625rem;
-  top: 5px;
-  display: block;
-  width: 1px;
-  height: 22px;
-  background: #e7e7e7;
-}
-
-h3 {
-  font-size: 100%;
-}
-.guideDown {
-  padding: 12px 13px;
-  .caption {
-    margin-bottom: 10px;
-    line-height: 15px;
-    color: rgb(55, 41, 41);
-    opacity: 0.8;
+  [v-clock] {
+    display: none;
   }
 
-  .icons {
+  .mint-search-list {
+    z-index: 99;
+  }
+
+  .active {
+    color: #fff;
+    background-color: #ed323c;
+    border-radius: 3px;
+  }
+
+  body {
     width: 100%;
-    overflow: hidden;
-    dt {
-      float: left;
+    background-color: #ecece5;
+  }
+
+  .mint-header {
+    background-color: #252525;
+    position: relative;
+  }
+
+  .mint-searchbar-inner .mintui-search {
+    font-size: 1.125rem !important;
+  }
+  .mint-searchbar-core {
+    font-size: 0.75rem !important;
+  }
+  .mint-search {
+    height: 9vh;
+  }
+
+  .jinnang {
+    width: 100%;
+  }
+
+  .jn-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: #fff;
+
+    .jn-nav1 {
+      position: relative;
+
+      text-align: center;
+      line-height: 32px;
+      width: 24.3%;
+      height: 32px;
+
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4) {
+        border-bottom: 1px solid #e7e7e7;
+      }
+    }
+  }
+
+  .bor {
+    position: absolute;
+    left: -0.625rem;
+    top: 5px;
+    display: block;
+    width: 1px;
+    height: 22px;
+    background: #e7e7e7;
+  }
+
+  h3 {
+    font-size: 100%;
+  }
+  .guideDown {
+    padding: 12px 13px;
+    .caption {
+      margin-bottom: 10px;
+      line-height: 15px;
+      color: rgb(55, 41, 41);
+      opacity: 0.8;
     }
 
-    dd {
-      float: left;
-      margin-left: 15px;
-      a {
-        display: block;
-        min-width: 38px;
-        padding-top: 40px;
-        background: url() no-repeat center 0;
-        background-size: 38px 38px;
-        text-align: center;
-        font-size: 10px;
-        span {
-          opacity: 0.6;
-          color: rgb(55, 41, 41);
+    .icons {
+      width: 100%;
+      overflow: hidden;
+      dt {
+        float: left;
+      }
+
+      dd {
+        float: left;
+        margin-left: 15px;
+        a {
+          display: block;
+          min-width: 38px;
+          padding-top: 40px;
+          background: url() no-repeat center 0;
+          background-size: 38px 38px;
+          text-align: center;
+          font-size: 10px;
+          span {
+            opacity: 0.6;
+            color: rgb(55, 41, 41);
+          }
+        }
+      }
+      dd.android {
+        a {
+          background-image: url(../assets/img/iphone.png);
+        }
+      }
+      dd.iphone {
+        a {
+          background-image: url(../assets/img/android.png);
+          span {
+            opacity: 0.6;
+            color: rgb(55, 41, 41);
+          }
         }
       }
     }
-    dd.android {
-      a {
-        background-image: url(../assets/img/iphone.png);
-      }
-    }
-    dd.iphone {
-      a {
-        background-image: url(../assets/img/android.png);
-        span {
-          opacity: 0.6;
-          color: rgb(55, 41, 41);
-        }
-      }
-    }
   }
-}
-.mint-search-list-warp {
-  background-color: #fff;
-  z-index: 99;
-}
-.mFooter {
-  border-top: 1px solid #65ae76;
-  margin-top: 23px;
-  padding: 10px 13px 5px;
-  font-size: 15px;
-  line-height: 30px;
-  a {
-    text-decoration: none;
-    color: #006aad;
+  .mint-search-list-warp {
+    background-color: #fff;
+    z-index: 99;
   }
-  .sign {
-    color: #1e66b2;
-  }
-  .nav {
-    color: #727272;
+  .mFooter {
+    border-top: 1px solid #65ae76;
+    margin-top: 23px;
+    padding: 10px 13px 5px;
+    font-size: 15px;
+    line-height: 30px;
     a {
+      text-decoration: none;
+      color: #006aad;
+    }
+    .sign {
+      color: #1e66b2;
+    }
+    .nav {
       color: #727272;
+      a {
+        color: #727272;
+      }
     }
-  }
 
-  .type {
-    color: #636363;
-    em {
-      color: #000;
-      font-style: normal;
-      font-weight: 500;
+    .type {
+      color: #636363;
+      em {
+        color: #000;
+        font-style: normal;
+        font-weight: 500;
+      }
     }
-  }
-  .copy {
-    font-size: 13px;
-    line-height: 24px;
-    color: #b4b4b4;
+    .copy {
+      font-size: 13px;
+      line-height: 24px;
+      color: #b4b4b4;
+    }
   }
 }
 </style>
