@@ -39,11 +39,32 @@ vue2.5+vuex+vue-router+webpack+ES6/7+axios+sass+Vant ui
 
 ## 部分截图
 
-暂无..(*￣rǒ￣)
+### 主页
+
+<img src="./qydemo/src/assets/demoimg/dome1.png" width="365" height="619"/> <img src="https://github.com/bailicangdu/vue2-elm/blob/master/screenshots/msite.gif" width="365" height="619"/>
+
+
+### 主页瀑布流无限加载
+
+<img src="./qydemo/src/assets/demoimg/dome3.gif" width="365" height="619"/> <img src="https://github.com/bailicangdu/vue2-elm/blob/master/screenshots/msite.gif" width="365" height="619"/>
+
+### 自动定位
+
+<img src="./qydemo/src/assets/demoimg/dome2.png" width="365" height="619"/> <img src="https://github.com/bailicangdu/vue2-elm/blob/master/screenshots/msite.gif" width="365" height="619"/>
+
 
 ## 项目目标
 
-暂无..(ノへ￣、)
+- [x] 定位功能 -- 完成
+- [x] 选择城市 -- 完成
+- [x] 搜索地址 -- 完成
+- [x] 主页瀑布流 -- 完成
+- [x] 登录、注册 -- 完成
+- [x] 城市详情页 -- 完成
+- [x] 产品详情页 -- 完成
+- [ ] 个人中心 --  1/2
+- [ ] 修改密码 -- 未完成
+
 
 ## 项目布局
 
