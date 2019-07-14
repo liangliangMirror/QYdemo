@@ -5,6 +5,7 @@
                 <div class="commodityImgBar clearfix">
                     <img src="../assets/img/shu.jpg" width="100%" height="auto" title="[暑期]广州直飞沙巴5-6天含税机票" alt="[暑期]广州直飞沙巴5-6天含税机票" class="commodityImg">
                     <div class="mask">
+                        <van-icon name="arrow-left" size="20px" @click="home" />
                     </div>
                     <div class="zw-share sharebtn">
                         <a data-bn-ipg="details-share-click" class="zw-share-button zw-share-button-white"></a>
@@ -89,7 +90,11 @@ import  Vue from 'vue';
 import { Icon } from 'vant';
 Vue.use(Icon);
 export default {
-    
+    methods:{
+      home(){
+        this.$router.push({ path:'/home'});
+      }
+    }
 }
 </script>
 <style lang="scss">
