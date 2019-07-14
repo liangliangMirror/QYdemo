@@ -31,7 +31,7 @@ import footerE from "../components/footer_e";
 export default {
   data() {
     return {
-      selected: "1"
+      selected: "1"  
     };
   },
   components: {

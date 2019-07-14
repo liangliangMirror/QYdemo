@@ -3,7 +3,7 @@
     <div @click="home">首页</div>
     <div class="nav">{{cityname}}</div>
     <div>
-      <span @click="search">
+      <span>
         <van-icon name="search" size="20px" />
       </span>
       <span>
@@ -15,14 +15,10 @@
 <script>
 // import Vue from "vue";
 export default {
-  methods: {
-    home() {
-      this.$router.push({ path: "/home" });
-      // console.log(this)
-    },
-    search() {
-      this.$router.push({ path: "/location" });
-    }
+    methods:{
+      home(){
+        this.$router.push({ path:'/home'});
+      }
   },
   mounted() {
     this.cityname = this.$route.params.cityname

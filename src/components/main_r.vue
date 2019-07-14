@@ -18,42 +18,50 @@
         </span>
         <span class="text">去过</span>
       </div>
-    </div>
-    <div class="collect">
-      <p @click="ceshi">
-        <van-icon name="like-o" size="15px" />
-        我收藏的{{city.cityname}}目的地
-      </p>
-      <p>></p>
-    </div>
-    <unmissable-r></unmissable-r>
-    <discount-L></discount-L>
-    <play-t></play-t>
-    <div class="recommend">
-      <a class="btn">在app中查看更多穷游er推荐玩乐</a>
-    </div>
-    <unmissable-r></unmissable-r>
-    <discount-L></discount-L>
-    <play-t></play-t>
-    <div class="recommend">
-      <a class="btn">在app中查看更多推荐美食</a>
-    </div>
-    <unmissable-r></unmissable-r>
-    <ul class="note-list">
-      <li v-for="item in tour" :key="item.id">
-        <a href="#">
-          <p>{{item.title}}</p>
-          <div class="note-info">
-            <span>{{item.username}}</span>
-            <span>{{item.time}}</span>
-            <span>{{item.like}}人喜欢</span>
-          </div>
-        </a>
-      </li>
-    </ul>
-    <div class="recommend">
-      <a class="btn">在app中查看更多推荐游记</a>
-    </div>
+      </div>
+      <van-grid square>
+      <van-grid-item
+        v-for="item in trees"
+        :key="item.id"
+        icon="point-gift"
+        :text="item.character"
+        @click="ceshi"
+      />
+    </van-grid>
+      <div class="collect">
+        <p><van-icon name="like-o" size="15px" />我收藏的东京目的地</p>
+        <p>></p>
+      </div>
+      <unmissable-r></unmissable-r>
+      <discount-L></discount-L>
+      <play-t></play-t> 
+      <div class="recommend">
+        <a class="btn">
+                在app中查看更多穷游er推荐玩乐
+            </a>
+      </div>
+      <unmissable-r></unmissable-r>
+      <discount-L></discount-L>
+      <play-t></play-t> 
+      <div class="recommend">
+        <a class="btn">
+                在app中查看更多推荐美食
+            </a>
+      </div>
+      <unmissable-r></unmissable-r>
+      <ul class="note-list">
+        <li v-for="item in tour" :key="item.id">
+          <a href="#">
+                <p>{{item.title}}</p>
+                <div class="note-info"><span>{{item.username}}</span><span>{{item.time}}</span><span>{{item.like}}人喜欢</span></div>
+            </a>
+        </li>
+      </ul>
+      <div class="recommend">
+        <a class="btn">
+                在app中查看更多推荐游记
+            </a>
+      </div>
     <div class="recommend-about">
       <div class="rd-top">相关推荐</div>
       <div class="rd-sec-wrap">
@@ -120,93 +128,81 @@
   </div>
 </template>
 <script>
-import Vue from "vue";
-import { Icon } from "vant";
+import Vue from 'vue';
+import { Icon } from 'vant';
+import { Grid, GridItem } from 'vant';
 import playT from "../components/play_t";
 import unmissableR from "../components/unmissable_r";
 import discountL from "../components/home/discount";
 Vue.use(Icon);
+Vue.use(Grid).use(GridItem);
 export default {
   data() {
     return {
-      tour: [
-        {
-          id: "1",
-          title:
-            "与东京的初次相遇——2019春节东京(迪士尼)/箱根/河口湖/镰仓亲子游记（6万字，完结）",
-          username: "myamnesia",
-          time: "2019-02-27",
-          like: "550"
-        },
-        {
-          id: "2",
-          title:
-            "逆转型亲子游❀樱花前奏中の母女関東日记 （箱根镰仓东京交通全攻略+东京的20个一日游玩法介绍）",
-          username: "宣尛見",
-          time: "2019-04-26",
-          like: "706"
-        },
-        {
-          id: "3",
-          title:
-            "【从平成走向令和】——2019五一7日6晚东京游（东京/箱根/镰仓/日光/吉祥寺）——带着妈妈外婆去日本",
-          username: "菲丽斯斯斯密达",
-          time: "2019-05-05",
-          like: "242"
-        },
-        {
-          id: "4",
-          title:
-            "日本深度游之东京探店 | 代官山10家逛吃推荐+8家剁手中古店/涩谷不得不去的6家CAFE/中目黑吃逛全攻略",
-          username: "谢谢菜菜",
-          time: "2019-06-17",
-          like: "247"
-        }
-      ],
-      tours: [
-        {
-          id: "1",
-          title: "籍根"
-        },
-        {
-          id: "2",
-          title: "京都"
-        },
-        {
-          id: "3",
-          title: "富士山地区"
-        },
-        {
-          id: "4",
-          title: "镰仓"
-        },
-        {
-          id: "5",
-          title: "大阪"
-        },
-        {
-          id: "6",
-          title: "富士河口湖"
-        },
-        {
-          id: "7",
-          title: "横滨"
-        },
-        {
-          id: "8",
-          title: "奈良"
-        }
-      ],
-      tree: [{}, {}],
-      city: {
-        cityname: "",
-        id: ""
+      tour:[{
+        id:'1',
+        title:'与东京的初次相遇——2019春节东京(迪士尼)/箱根/河口湖/镰仓亲子游记（6万字，完结）',
+        username:'myamnesia',
+        time:'2019-02-27',
+        like:'550'
+      },
+      {
+        id:'2',
+        title:'逆转型亲子游❀樱花前奏中の母女関東日记 （箱根镰仓东京交通全攻略+东京的20个一日游玩法介绍）',
+        username:'宣尛見',
+        time:'2019-04-26',
+        like:'706'
+      },
+      {
+        id:'3',
+        title:'【从平成走向令和】——2019五一7日6晚东京游（东京/箱根/镰仓/日光/吉祥寺）——带着妈妈外婆去日本',
+        username:'菲丽斯斯斯密达',
+        time:'2019-05-05',
+        like:'242'
+      },
+      {
+        id:'4',
+        title:'日本深度游之东京探店 | 代官山10家逛吃推荐+8家剁手中古店/涩谷不得不去的6家CAFE/中目黑吃逛全攻略',
+        username:'谢谢菜菜',
+        time:'2019-06-17',
+        like:'247'
+      }],
+      tours:[{
+        id:'1',
+        title:'籍根'
+      },{
+        id:'2',
+        title:'京都'
+      },{
+        id:'3',
+        title:'富士山地区'
+      },{
+        id:'4',
+        title:'镰仓'
+      },{
+        id:'5',
+        title:'大阪'
+      },{
+        id:'6',
+        title:'富士河口湖'
+      },{
+        id:'7',
+        title:'横滨'
+      },{
+        id:'8',
+        title:'奈良'
+      }],
+      trees:[{character:'景点游玩'},{character:'美食'},{character:'交通'},{character:'浏览路线'},{character:'签证'},{character:'机酒自由行'},{character:'景点门票'},{character:'WiFi电话卡'}],
+      tree:[{},{}],
+      city:{
+        cityname:"",
+        id:""
       }
     };
   },
   methods: {
     ceshi() {
-      this.$router.push({ path: "./aaa" });
+      this.$router.push({ path: "./aaa" ,query:{city:this.city.cityname}});
     }
   },
   components: {
@@ -227,11 +223,14 @@ export default {
 body {
   -webkit-overflow-scrolling: touch;
 }
-.main {
-  .logo {
-    height: 180px;
-    position: relative;
-    img {
+.van-icon-point-gift:before {
+    color: skyblue;
+}
+ .main{
+    .logo{
+      height: 180px;
+      position: relative;
+      img{
       width: 100%;
       height: 100%;
     }
