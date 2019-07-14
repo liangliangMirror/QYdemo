@@ -15,8 +15,17 @@
           <span class="text">去过</span>
       </div>
       </div>
+      <van-grid square>
+      <van-grid-item
+        v-for="item in trees"
+        :key="item.id"
+        icon="point-gift"
+        :text="item.character"
+        @click="ceshi"
+      />
+    </van-grid>
       <div class="collect">
-        <p @click="ceshi"><van-icon name="like-o" size="15px" />我收藏的东京目的地</p>
+        <p><van-icon name="like-o" size="15px" />我收藏的东京目的地</p>
         <p>></p>
       </div>
       <unmissable-r></unmissable-r>
@@ -112,10 +121,12 @@
 <script>
 import Vue from 'vue';
 import { Icon } from 'vant';
+import { Grid, GridItem } from 'vant';
 import playT from "../components/play_t";
 import unmissableR from "../components/unmissable_r";
 import discountL from "../components/home/discount";
 Vue.use(Icon);
+Vue.use(Grid).use(GridItem);
 export default {
   data() {
     return {
@@ -172,11 +183,8 @@ export default {
         id:'8',
         title:'奈良'
       }],
-      tree:[{
-
-      },{
-
-      }]
+      trees:[{character:'景点游玩'},{character:'美食'},{character:'交通'},{character:'浏览路线'},{character:'签证'},{character:'机酒自由行'},{character:'景点门票'},{character:'WiFi电话卡'}],
+      tree:[{},{}]
     };
   },  
   methods: {
@@ -195,6 +203,9 @@ export default {
 <style lang="scss">
 body{
   -webkit-overflow-scrolling: touch;
+}
+.van-icon-point-gift:before {
+    color: skyblue;
 }
  .main{
     .logo{
