@@ -59,8 +59,7 @@ vue2.5+vue-cli+vuex+vue-router+webpack+ES6/7+axios+sass+Vant ui
 - [x] 登录、注册 -- 完成
 - [x] 城市详情页 -- 完成
 - [x] 产品详情页 -- 完成
-- [ ] 个人中心 --  1/2
-- [ ] 修改密码 -- 未完成
+
 
 
 ## 项目职责
@@ -97,11 +96,24 @@ vue2.5+vue-cli+vuex+vue-router+webpack+ES6/7+axios+sass+Vant ui
 
 ```
 
+├─public 		  //公共资源
+├─src			  //项目开发文件
+│  ├─assets   			     
+│  │  ├─demoimg    //项目截图
+│  │  └─img		   //项目图片
+│  ├─components    //组件
+│  │  ├─home	   //首页组件
+│  │  └─location   //定位组件
+│  ├─js			  //js文件	
+│  └─views         //单页面
+└─tests
+    └─unit
+
 
 ```
 
 ## 贡献者们/最棒的我们
-  
+
 <table><tbody><tr>
 <td>
    <a href="https://github.com/liangliangMirror" title="liangliangMirror"> <img src="./favicon.ico/adi-constantin-C8Z5DvtWQMw-unsplash.jpg" width="100px" height="60px" /> </a></td>

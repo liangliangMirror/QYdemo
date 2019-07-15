@@ -41,19 +41,28 @@ export default new Vuex.Store({
   },
   actions: {
     pushhistorys(context) {
-      let pinyins = window.localStorage
-        .getItem("pinyin")
-        .split(",")
-      window.localStorage
-        .getItem("historyl")
-        .split(",")
-        .forEach((item, index) => {
+
+      if (window.localStorage
+        .getItem("pinyin")) {
+        let pinyins = window.localStorage
+          .getItem("pinyin")
+          .split(",")
+
+
+        let arr = window.localStorage
+          .getItem("historyl")
+          .split(",");
+
+        arr.forEach((item, index) => {
           context.commit('pushhistory', {
             name: item,
             pinyin: pinyins[index]
           })
         });
 
+      } else {
+        return;
+      }
     }
   }
 })
