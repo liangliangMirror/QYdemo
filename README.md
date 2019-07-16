@@ -35,7 +35,7 @@ vue2.5+vue-cli+vuex+vue-router+webpack+ES6/7+axios+sass+Vant ui
 
 - [穷游网官网 (￣_,￣ )](https://www.qyer.com/)
 
-- [我们的demo (๑•̀ㅂ•́)و✧](https://www.baidu.com)
+- [我们的demo (๑•̀ㅂ•́)و✧](http://47.101.143.75:3080)
 
 ## 部分截图
 
